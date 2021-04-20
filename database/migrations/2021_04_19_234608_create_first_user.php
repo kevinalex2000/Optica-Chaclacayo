@@ -13,10 +13,6 @@ class CreateFirstUser extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
-
         DB::table("users")
         ->insert([
             "name" => "admin",
