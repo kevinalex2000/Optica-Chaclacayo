@@ -13,10 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Auth::routes();
+
 Route::get('/', function () {
     return redirect('login');
 });
 
-Auth::routes();
+/* Cancelando ruta Register */
+Route::get('/register', function () {
+    return redirect('login');
+});
+/* Cancelando ruta password/reset */
+Route::get('/password/reset', function () {
+    return redirect('login');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
