@@ -72,10 +72,10 @@
                                 <a href="#" class="nav-btn-submenu"><i class="fas fa-users fa-fw"></i> &nbsp; Clientes <i class="fas fa-chevron-down"></i></a>
                                 <ul>
                                     <li>
-                                        <a href="/clients/create"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Cliente</a>
+                                        <a href="{{route('clients.create')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Cliente</a>
                                     </li>
                                     <li>
-                                        <a href="/clients/"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de clientes</a>
+                                        <a href="{{route('clients.index')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de clientes</a>
                                     </li>
                                 </ul>
                             </li>
