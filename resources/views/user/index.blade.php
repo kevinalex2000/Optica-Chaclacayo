@@ -33,97 +33,36 @@
                     <th>NOMBRE</th>
                     <th>APELLIDO</th>
                     <th>TELÉFONO</th>
-                    <th>USUARIO</th>
                     <th>EMAIL</th>
                     <th>ACTUALIZAR</th>
                     <th>ELIMINAR</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($users as $index => $user)
                 <tr class="text-center" >
-                    <td>1</td>
-                    <td>03045643</td>
-                    <td>NOMBRE DE USUARIO</td>
-                    <td>APELLIDO DE USUARIO</td>
-                    <td>2345456</td>
-                    <td>NOMBRE DE USUARIO</td>
-                    <td>ADMIN@ADMIN.COM</td>
+                    <td>{{$index+1}}</td>
+                    <td>{{$user->dni}}</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->lastname}}</td>
+                    <td>{{$user->phone}}</td>
+                    <td>{{$user->email}}</td>
                     <td>
-                        <a href="user-update.html" class="btn btn-success">
+                        <a href="{{route('users.edit', $user->id)}}" class="btn btn-success">
                               <i class="fas fa-sync-alt"></i>
                         </a>
                     </td>
                     <td>
-                        <form action="">
+                        <form action="{{route('users.destroy', $user->id)}}">
+                            @csrf
+                            @method('delete')
                             <button type="button" class="btn btn-warning">
                                   <i class="far fa-trash-alt"></i>
                             </button>
                         </form>
                     </td>
                 </tr>
-                <tr class="text-center" >
-                    <td>2</td>
-                    <td>03045643</td>
-                    <td>NOMBRE DE USUARIO</td>
-                    <td>APELLIDO DE USUARIO</td>
-                    <td>2345456</td>
-                    <td>NOMBRE DE USUARIO</td>
-                    <td>ADMIN@ADMIN.COM</td>
-                    <td>
-                        <a href="user-update.html" class="btn btn-success">
-                              <i class="fas fa-sync-alt"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <form action="">
-                            <button type="button" class="btn btn-warning">
-                                  <i class="far fa-trash-alt"></i>
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-                <tr class="text-center" >
-                    <td>3</td>
-                    <td>03045643</td>
-                    <td>NOMBRE DE USUARIO</td>
-                    <td>APELLIDO DE USUARIO</td>
-                    <td>2345456</td>
-                    <td>NOMBRE DE USUARIO</td>
-                    <td>ADMIN@ADMIN.COM</td>
-                    <td>
-                        <a href="user-update.html" class="btn btn-success">
-                              <i class="fas fa-sync-alt"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <form action="">
-                            <button type="button" class="btn btn-warning">
-                                  <i class="far fa-trash-alt"></i>
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-                <tr class="text-center" >
-                    <td>4</td>
-                    <td>03045643</td>
-                    <td>NOMBRE DE USUARIO</td>
-                    <td>APELLIDO DE USUARIO</td>
-                    <td>2345456</td>
-                    <td>NOMBRE DE USUARIO</td>
-                    <td>ADMIN@ADMIN.COM</td>
-                    <td>
-                        <a href="user-update.html" class="btn btn-success">
-                              <i class="fas fa-sync-alt"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <form action="">
-                            <button type="button" class="btn btn-warning">
-                                  <i class="far fa-trash-alt"></i>
-                            </button>
-                        </form>
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
