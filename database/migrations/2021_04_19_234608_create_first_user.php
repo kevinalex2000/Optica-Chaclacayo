@@ -16,7 +16,12 @@ class CreateFirstUser extends Migration
         DB::table("users")
         ->insert([
             "name" => "admin",
+            "lastname"=>"oviedo",
+            "phone"=>"987654321",
+            "direction"=>"ventanilla",
+            "dni"=>"12345678",
             "email" => "admin@admin",
+            "id_rol" => 1,
             "password" => '$2y$10$VBKBZHyT2R4hM.Zya7wRP.AjHdAE3kqZUcYSCORJuzUXiqlSJlpdK', // 12345678 Codificado
         ]);
     }
