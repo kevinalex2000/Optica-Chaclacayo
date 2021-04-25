@@ -68,7 +68,7 @@ class UserController extends Controller
                     $user->name = $request->post('name');
                     $user->lastname = $request->post('lastname');
                     $user->phone = $request->post('phone');
-                    $user->direction = $request->post('direction');
+                    $user->address = $request->post('address');
                     $user->email = $request->post('email');
                     $user->username = $request->post('username');
                     $user->password = $request->post('password');
@@ -96,7 +96,7 @@ class UserController extends Controller
                 $user->name = $request->post('name');
                 $user->lastname = $request->post('lastname');
                 $user->phone = $request->post('phone');
-                $user->direction = $request->post('direction');
+                $user->address = $request->post('address');
                 $user->email = $request->post('email');
                 $user->username = $request->post('username');
                 $user->id_rol = $request->post('id_rol');
@@ -182,7 +182,7 @@ class UserController extends Controller
                     $user->name = $request->post('name');
                     $user->lastname = $request->post('lastname');
                     $user->phone = $request->post('phone');
-                    $user->direction = $request->post('direction');
+                    $user->address = $request->post('address');
                     $user->email = $request->post('email');
                     $user->username = $request->post('username');
                     $user->password = $request->post('password');
@@ -210,7 +210,7 @@ class UserController extends Controller
                 $user->name = $request->post('name');
                 $user->lastname = $request->post('lastname');
                 $user->phone = $request->post('phone');
-                $user->direction = $request->post('direction');
+                $user->address = $request->post('address');
                 $user->email = $request->post('email');
                 $user->username = $request->post('username');
                 $user->id_rol = $request->post('id_rol');

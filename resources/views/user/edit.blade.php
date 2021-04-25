@@ -63,7 +63,7 @@
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="usuario_direccion" class="bmd-label-floating">Dirección</label>
-                            <input type="text" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,#\- ]{1,190}" class="form-control" name="direction" value="{{$data["User"]->direction}}" id="usuario_direccion" maxlength="190">
+                            <input type="text" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,#\- ]{1,190}" class="form-control" name="address" value="{{$data["User"]->address}}" id="usuario_direccion" maxlength="190">
                         </div>
                     </div>
                 </div>
