@@ -14,9 +14,9 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="form-group">
-                <label for="email" class="bmd-label-floating"><i class="fas fa-user-secret"></i> &nbsp; Correo Electrónico</label>
-                <input  id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocustype="email" maxlength="35" required="" >
-                @error('email')
+                <label for="username" class="bmd-label-floating"><i class="fas fa-user-secret"></i> &nbsp; Nombre de Usuario</label>
+                <input  id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" maxlength="35" >
+                @error('username')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>

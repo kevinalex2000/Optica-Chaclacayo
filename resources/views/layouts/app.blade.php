@@ -58,7 +58,10 @@
                         <i class="far fa-times-circle show-nav-lateral"></i>
                         <img src="/assets/avatar/Avatar.png" class="img-fluid" alt="Avatar">
                         <figcaption class="roboto-medium text-center">
-                            {{ Auth::user()->name }} <br><small class="roboto-condensed-light">Administrador</small>
+                            {{ Auth::user()->name }} <br>
+                            <small class="roboto-condensed-light">
+                            {{ Auth::user()->role->name }}
+                            </small>
                         </figcaption>
                     </figure>
                     <div class="full-box nav-lateral-bar"></div>
