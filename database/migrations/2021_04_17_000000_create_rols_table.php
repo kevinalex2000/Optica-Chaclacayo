@@ -16,13 +16,23 @@ class CreateRolsTable extends Migration
         Schema::create('rols', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('description');
+            $table->string('leyend');
             $table->timestamps();
         });
 
         DB::table("rols")
         ->insert([
-            ["name" => "Administrador"],
-            ["name" => "Asistente de ventas"]
+            [
+                "name" => "Administrador",
+                "description" => "Permisos para registrar, actualizar y eliminar",
+                "leyend" => "badge-info"
+            ],
+            [
+                "name" => "Asistente de ventas",
+                "description" => "Permisos para registrar y actualizar",
+                "leyend" => "badge-success"
+            ]
         ]);
     }
 

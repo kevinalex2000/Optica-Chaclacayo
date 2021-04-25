@@ -20,7 +20,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
+
 	<!-- Normalize V8.0.1 -->
 	<link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
 
@@ -42,12 +42,12 @@
     <!-- General Styles -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-    
+
 </head>
 <body>
     <div id="app">
 
-        
+
         <!-- Main container -->
         <main class="full-box main-container">
             <!-- Nav lateral -->
@@ -99,7 +99,7 @@
                                 <a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Usuarios <i class="fas fa-chevron-down"></i></a>
                                 <ul>
                                     <li>
-                                        <a href="/users/add"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo usuario</a>
+                                        <a href="/users/create"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo usuario</a>
                                     </li>
                                     <li>
                                         <a href="/users"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de usuarios</a>
@@ -140,7 +140,7 @@
 
     </div>
 
-    
+
 	<!--=============================================
 	=            Include JavaScript files           =
 	==============================================-->
