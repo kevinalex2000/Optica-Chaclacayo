@@ -26,12 +26,12 @@ class CreateRolsTable extends Migration
             [
                 "name" => "Administrador",
                 "description" => "Permisos para registrar, actualizar y eliminar",
-                "leyend" => "badge-info"
+                "leyend" => "info"
             ],
             [
                 "name" => "Asistente de ventas",
                 "description" => "Permisos para registrar y actualizar",
-                "leyend" => "badge-success"
+                "leyend" => "success"
             ]
         ]);
     }
