@@ -21,6 +21,7 @@ class CreateAppointmentsTable extends Migration
             $table->unsignedBigInteger('id_appointment_state')->nullable()->default(2);
             $table->unsignedBigInteger("id_client");
             $table->unsignedBigInteger("id_user")->nullable();
+            $table->unsignedBigInteger("id_office")->nullable();
             $table->timestamps();
             $table->foreign('id_appointment_state')
                     ->references('id')
@@ -33,6 +34,10 @@ class CreateAppointmentsTable extends Migration
             $table->foreign('id_user')
                     ->references('id')
                     ->on('users')
+                    ->onDelete('set null');
+            $table->foreign('id_office')
+                    ->references('id')
+                    ->on('offices')
                     ->onDelete('set null');
         });
     }
