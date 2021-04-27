@@ -108,6 +108,18 @@
                             </li>
 
                             <li>
+                                <a href="#" class="nav-btn-submenu"><i class="fas  fa-calendar-check fa-fw"></i> &nbsp; Citas <i class="fas fa-chevron-down"></i></a>
+                                <ul>
+                                    <li>
+                                        <a href="{{route('appointment.create')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; Nueva Cita</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('appointment.index')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Citas</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
                                 <a href="/company"><i class="fas fa-store-alt fa-fw"></i> &nbsp; Empresa</a>
                             </li>
                         </ul>

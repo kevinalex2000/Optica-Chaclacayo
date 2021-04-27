@@ -17,7 +17,9 @@ class CreateAppointmentsTable extends Migration
             $table->id();
             $table->date("date");
             $table->time("time");
+            $table->string("case");
             $table->string("detail");
+            $table->float("price");
             $table->unsignedBigInteger('id_appointment_state')->nullable()->default(2);
             $table->unsignedBigInteger("id_client");
             $table->unsignedBigInteger("id_user")->nullable();
