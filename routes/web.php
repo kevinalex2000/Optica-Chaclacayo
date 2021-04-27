@@ -31,10 +31,6 @@ Route::get('/password/reset', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-/* RUTAS DE MODULO CLIENTES */
+Route::resource('/users', '\App\Http\Controllers\UserController');
 
 Route::resource('/clients', '\App\Http\Controllers\ClientController');
-//Route::get('/clients', [App\Http\Controllers\ClientController::class, 'index'])->name('clients');
-//Route::get('/clients/add', [App\Http\Controllers\ClientController::class, 'viewNewClient'])->name('newClient');
-
-/* FIN DE RUTAS DE MODULO CLIENTES */
