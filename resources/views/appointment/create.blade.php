@@ -47,6 +47,9 @@
                         <div class="form-group">
                             <label for="cliente_nombre" class="bmd-label-floating">Cliente</label>
                             <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" name="cliente" id="cliente_nombre" maxlength="40">
+                            <select name="" id="">
+                                <option value="">{{$data["User"]->id}}</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">

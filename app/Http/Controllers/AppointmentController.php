@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use App\Models\User;
 use App\Models\Client;
+use App\Models\Office;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
@@ -30,8 +31,8 @@ class AppointmentController extends Controller
     {
         $users = User::all();
         $clients = Client::all();
-        $office = "";
-        return view('appointment.create')->with('data',array("Users" =>$users, "Clients" => $clients));
+        $offices = Office::all();
+        return view('appointment.create')->with('data',array("Users" =>$users, "Clients" => $clients,"Offices" => $offices));
     }
 
     /**
