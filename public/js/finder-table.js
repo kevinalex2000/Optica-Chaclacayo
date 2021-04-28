@@ -1,25 +1,57 @@
 $(document).ready(function () {
-    $(".input-find-in-table").keyup(function () {
-        let busqueda = $(this).val().toLowerCase();
-        let filas = $("#" + $(this).attr("target-table-id") + " > tbody > tr");
+    function obtenerValoresFiltro(grupoInputs) {
+        let inputs = $(".input-finder", grupoInputs);
+        let valoresFiltro = {};
 
-        filas.each(function () {
+        inputs.each(function () {
+            let columna = $(this).attr("column-finder");
+            let texto = $(this).val();
+
+            valoresFiltro[columna] = texto.toLowerCase();
+        });
+
+        return valoresFiltro;
+    }
+
+    function buscarPorFiltro(obj) {
+        debugger;
+        let grupoInputs = obj.closest(".group-inputs-finder");
+        let valoresFiltro = obtenerValoresFiltro(grupoInputs);
+
+        let idTabla = grupoInputs.attr("target-table-id");
+
+        $("#" + idTabla + " > tbody > tr").each(function () {
             let fila = $(this);
-            let celdasABuscar = $("td.finder", this);
+            let oculto = false;
 
-            let Oculto = true;
+            $("td", this).each(function () {
+                let campo = $(this).attr("column-finder-name");
 
-            celdasABuscar.each(function () {
-                let texto = $(this).text().toLowerCase();
+                if (campo != undefined) {
+                    let texto = $(this).text().toLowerCase();
 
-                if (texto.indexOf(busqueda) >= 0) {
-                    Oculto = false;
+                    if (texto != "" && texto != null) {
+                        let textoInput = valoresFiltro[campo];
+
+                        if (texto.indexOf(textoInput) == -1) {
+                            oculto = true;
+                        }
+                    }
                 }
             });
 
-            Oculto ? fila.hide() : fila.show();
+            if (oculto) fila.hide();
+            else fila.show();
         });
+    }
 
-        console.log("busqueda: " + $(this).attr("target-table-id"));
+    $(".group-inputs-finder .input-finder[action='keyup']").keyup(function () {
+        buscarPorFiltro($(this));
     });
+
+    $(".group-inputs-finder .input-finder[action='change']").change(
+        function () {
+            buscarPorFiltro($(this));
+        }
+    );
 });
