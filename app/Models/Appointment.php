@@ -17,15 +17,20 @@ class Appointment extends Model
         'price',
         'id_appointment_state',
         'id_client',
-        'id_user'
+        'id_user',
+        'id_office'
     ];
 
     public function appointment_state(){
-        return $this->belongsTo(Appointment_State::Class, "id_appointment_state");
+        return $this->belongsTo(AppointmentState::Class, "id_appointment_state");
     }
 
     public function client(){
         return $this->belongsTo(Client::Class, "id_client");
+    }
+
+    public function office(){
+        return $this->belongsTo(Office::Class, "id_office");
     }
 
     public function user(){

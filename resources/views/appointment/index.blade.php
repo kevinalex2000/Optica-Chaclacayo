@@ -24,22 +24,28 @@
 
 <div class="container-fluid py-4">
     <form>
-        <div class="form-row">
-          <div class="col">
-            <input type="date" class="form-control">
+        <div class="form-row group-inputs-finder" target-table-id="table-appointment">
+          <div class="col-md-3">
+            <input type="date" action="change" class="form-control input-finder" column-finder="fecha">
           </div>
-          <div class="col">
-            <select class="form-control" name="id_paciente" required>
-                <option value="" selected="" disabled="">Paciente:</option>
+          <div class="col-md-3">
+            <select class="form-control input-finder" action="change" name="id_paciente" column-finder="paciente">
+                <option value="" selected="">Paciente:</option>
+                @foreach ($data["Clients"] as $client)
+                <option value="{{$client->name}}">{{$client->name}}</option>
+                @endforeach
             </select>
           </div>
-          <div class="col">
-            <select class="form-control" name="id_encargado" required>
-                <option value="" selected="" disabled="">Encargado:</option>
+          <div class="col-md-3">
+            <select class="form-control input-finder" action="change" name="id_encargado" column-finder="encargado">
+                <option value="" selected="" >Encargado:</option>
+                @foreach ($data["Users"] as $user)
+                <option value="{{$user->name}}">{{$user->name}}</option>
+                @endforeach
             </select>
           </div>
-          <div class="col">
-            <input type="text" class="form-control" name="asunto" id="asunto" placeholder="Asunto">
+          <div class="col-md-3">
+            <input type="text" class="form-control input-finder" action="keyup" name="asunto" id="asunto" placeholder="Asunto" column-finder="asunto">
           </div>
         </div>
       </form>
@@ -58,30 +64,34 @@
                 <tr class="text-center roboto-medium">
                     <th>#</th>
                     <th>ASUNTO</th>
-                    <th>PACIENTE</th>
                     <th>ENCARGADO</th>
+                    <th>PACIENTE</th>
                     <th>FECHA</th>
+                    <th>HORA</th>
                     <th>ESTADO</th>
+                    <th>SUCURSAL</th>
                     <th>ACTUALIZAR</th>
                     <th>ELIMINAR</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($appointments as $index => $appointment)
+                @foreach ($data["Appointment"] as $index => $appointment)
                 <tr class="text-center" >
                     <td>{{$index+1}}</td>
-                    <td>{{$appointment->detail}}</td>
-                    <td>{{$appointment->user()->name}}</td>
-                    <td>{{$appointment->client()->name}}</td>
+                    <td column-finder-name="asunto">{{$appointment->case}}</td>
+                    <td column-finder-name="encargado">{{$appointment->user->name}}</td>
+                    <td column-finder-name="paciente">{{$appointment->client->name}}</td>
+                    <td column-finder-name="fecha">{{ \Carbon\Carbon::parse($appointment->date)->format('d/m/Y')}}</td>
                     <td>{{$appointment->time}}</td>
-                    <td>{{$appointment->appointment_state()->description}}</td>
+                    <td><span class="badge badge-{{$appointment->appointment_state->leyend}}">{{$appointment->appointment_state->description}}</span></td>
+                    <td>{{$appointment->office->name}}</td>
                     <td>
-                        <a href="{{route('appointments.edit', $appointment->id)}}" class="btn btn-success">
+                        <a href="{{route('appointment.edit', $appointment->id)}}" class="btn btn-success">
                               <i class="fas fa-sync-alt"></i>
                         </a>
                     </td>
                     <td>
-                        <form method="post" action="{{route('appointments.destroy', $appointment->id)}}">
+                        <form method="post" action="{{route('appointment.destroy', $appointment->id)}}">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-warning">

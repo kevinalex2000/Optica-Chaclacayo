@@ -109,7 +109,7 @@
                         <p><span class="badge {{$rol->leyend}}">{{$rol->name}}</span> {{$rol->description}}</p>
                         @endforeach
                         <div class="form-group">
-                            <select required class="form-control" name="usuario_privilegio_reg">
+                            <select required class="form-control" name="id_rol">
                                 <option value="" selected="" disabled="">Seleccione una opción</option>
                                 @foreach ($rols as $rol)
                                 <option value="{{$rol->id}}">{{$rol->name}}</option>
