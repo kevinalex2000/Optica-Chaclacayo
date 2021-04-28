@@ -62,7 +62,7 @@ class ClientController extends Controller
             $messageResult = array(
                 "type" => "warning",
                 "message" => "<i class='fas fa-exclamation-triangle mr-2'></i> No se ha podido crear el cliente debido que el DNI <b>".$request->post('dni')."</b> ya esta siendo utilizado"
-            );            
+            );
         }
 
         return redirect("/clients/create")->with('messageResult', $messageResult);
@@ -100,10 +100,10 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $clientExist = Client::where('dni', $request->post('dni'))->first();
+        $clientExist = Client::where('dni', $request->post('dni'))->count();
 
         // Si el cliente con dni no existe o si es el mismo
-        if(!$clientExist || $clientExist->id == $id){
+        if($clientExist <= 1){
 
             $client = Client::find($id);
 
@@ -114,7 +114,7 @@ class ClientController extends Controller
             $client->address = $request->post('address');
 
             $client->save();
-                
+
             $messageResult = array(
                 "type" => "success",
                 "message" => "<i class='fas fa-check mr-2'></i> El cliente <b>".$request->post('name')."</b> ha sido editado exitosamente"
@@ -123,7 +123,7 @@ class ClientController extends Controller
             $messageResult = array(
                 "type" => "warning",
                 "message" => "<i class='fas fa-exclamation-triangle mr-2'></i> No se ha podido editar el cliente debido que el DNI <b>".$request->post('dni')."</b> ya esta siendo utilizado"
-            );            
+            );
         }
 
         return redirect("/clients/".$id."/edit")->with('messageResult', $messageResult);
@@ -139,7 +139,7 @@ class ClientController extends Controller
     {
         $client = Client::find($id);
         $client->delete();
-        
+
         $messageResult = array(
             "type" => "danger",
             "message" => "<i class='fas fa-trash mr-2'></i> El cliente <b>".$client->name."</b> ha sido eliminado exitosamente"
