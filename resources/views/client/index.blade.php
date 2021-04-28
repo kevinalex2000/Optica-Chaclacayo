@@ -24,11 +24,25 @@
 </div>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
+    <div class="row group-inputs-finder" target-table-id="table-client" >
+        <div class="col-md-3">
             <div class="form-group bmd-form-group">
-                <label for="inputSearch" class="bmd-label-floating">¿Qué cliente estas buscando? Filtre por DNI, nombre, apellido o telefono</label>
-                <input type="text" class="form-control input-find-in-table" name="busqueda-" target-table-id="table-client" maxlength="30">
+                <input placeholder="DNI" type="text" class="form-control input-finder" action="keyup" column-finder="dni" maxlength="30">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group bmd-form-group">
+                <input placeholder="Nombre" type="text" class="form-control input-finder" action="keyup" column-finder="name" maxlength="30">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group bmd-form-group">
+                <input placeholder="Apellido" type="text" class="form-control input-finder" action="keyup" column-finder="lastname" maxlength="30">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group bmd-form-group">
+                <input placeholder="Telefono" type="text" class="form-control input-finder" action="keyup" column-finder="phone" maxlength="30">
             </div>
         </div>
     </div>
@@ -61,10 +75,10 @@
                 @foreach ($clients as $index => $client)
                 <tr class="text-center">
                     <td>{{$index+1}}</td>
-                    <td class="finder">{{$client->dni}}</td>
-                    <td class="finder">{{$client->name}}</td>
-                    <td class="finder">{{$client->lastname}}</td>
-                    <td class="finder">{{$client->phone}}</td>
+                    <td column-finder-name="dni">{{$client->dni}}</td>
+                    <td column-finder-name="name">{{$client->name}}</td>
+                    <td column-finder-name="lastname">{{$client->lastname}}</td>
+                    <td column-finder-name="phone">{{$client->phone}}</td>
                     <td>
                         <button type="button" class="btn btn-info" data-toggle="popover" data-trigger="hover" title="" 
                         data-content="{{$client->address}}" data-original-title="{{$client->name}}">
