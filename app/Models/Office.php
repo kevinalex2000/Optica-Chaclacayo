@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Office extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'name',
         'address',
@@ -16,7 +16,7 @@ class Office extends Model
         'id_user',
         'phone',
     ];
-    
+
     public function client(){
         return $this->belongsTo(User::Class, "id_user");
     }

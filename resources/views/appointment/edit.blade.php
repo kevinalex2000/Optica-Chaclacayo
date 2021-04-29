@@ -5,7 +5,7 @@
 <!-- Page header -->
 <div class="full-box page-header">
     <h3 class="text-left">
-        <i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR CITA
+        <i class="fas fa-plus fa-fw"></i> &nbsp; ACTUALIZAR CITA
     </h3>
     <p class="text-justify">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem odit amet asperiores quis minus, dolorem repellendus optio doloremque error a omnis soluta quae magnam dignissimos, ipsam, temporibus sequi, commodi accusantium!
@@ -31,8 +31,9 @@
 
 <!-- Content here-->
 <div class="container-fluid">
-    <form method="post" action="{{route('appointment.store')}}" class="form-neon" autocomplete="off">
+    <form method="post" action="{{route('appointment.update', $data["Appointment"]->id)}}" class="form-neon" autocomplete="off">
         @csrf
+        @method('put')
         <fieldset>
             <legend><i class="fas fa-notes-medical"></i> &nbsp; Nueva Reserva de cita</legend>
             <div class="container-fluid">
@@ -40,7 +41,7 @@
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="cliente_dni" class="bmd-label-floating">Asunto</label>
-                            <input type="text"  class="form-control" name="asunto" id="cliente_dni" maxlength="27" required>
+                            <input type="text"  class="form-control" name="asunto" id="cliente_dni"  maxlength="27" value="{{$data["Appointment"]->case}}" required>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
@@ -48,15 +49,27 @@
                             <select class="form-control" name="cliente" required>
                                 <option value="" selected="" disabled="">Cliente:</option>
                                 @foreach ($data["Clients"] as $client)
+                                @if($client->id == $data["Appointment"]->id_client)
+                                <option selected value="{{$client->id}}">{{$client->name}}</option>
+                                @else
                                 <option value="{{$client->id}}">{{$client->name}}</option>
+                                @endif
                                 @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="form-group">
-                            <label for="cliente_apellido" class="bmd-label-floating">Encargado</label>
-                            <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" name="usuario" value="{{ Auth::user()->name }}" maxlength="40" readonly>
+                            <select class="form-control" name="encargado" required>
+                                <option value="" selected="" disabled="">Encargado:</option>
+                                @foreach ($data["Users"] as $user)
+                                @if($user->id == $data["Appointment"]->id_user)
+                                <option selected value="{{$user->id}}">{{$user->name}}</option>
+                                @else
+                                <option value="{{$user->id}}">{{$user->name}}</option>
+                                @endif
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
@@ -64,7 +77,11 @@
                             <select class="form-control" name="sucursal" required>
                                 <option value="" selected="" disabled="">Sucursal:</option>
                                 @foreach ($data["Offices"] as $office)
+                                @if($office->id == $data["Appointment"]->id_office)
+                                <option selected value="{{$office->id}}">{{$office->name}}</option>
+                                @else
                                 <option value="{{$office->id}}">{{$office->name}}</option>
+                                @endif
                                 @endforeach
                             </select>
                         </div>
@@ -72,25 +89,39 @@
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="cliente_direccion" class="bmd-label-floating">Fecha</label>
-                            <input type="date" class="form-control" name="fecha" id="cliente_direccion" maxlength="150" required>
+                            <input type="date" class="form-control"  name="fecha" id="cliente_direccion" maxlength="150" value="{{$data["Appointment"]->date}}" required>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="cliente_direccion" class="bmd-label-floating">Hora</label>
-                            <input type="time" class="form-control" name="hora" id="cliente_direccion" maxlength="150" required>
+                            <input type="time" class="form-control" name="hora" id="cliente_direccion" maxlength="150" value="{{$data["Appointment"]->time}}" required>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="cliente_direccion" class="bmd-label-floating">Detalle de Consulta</label>
-                            <input type="text" class="form-control" name="detalle_consulta" id="cliente_direccion" maxlength="150" required>
+                            <input type="text" class="form-control" name="detalle_consulta" id="cliente_direccion" maxlength="150" value="{{$data["Appointment"]->detail}}" required>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="cliente_direccion" class="bmd-label-floating">Precio</label>
-                            <input type="number" class="form-control" name="precio" id="cliente_direccion" maxlength="150" required>
+                            <input type="number" class="form-control" name="precio" id="cliente_direccion" maxlength="150" value="{{$data["Appointment"]->price}}" required>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <select class="form-control" name="estado" required>
+                                <option value="" selected="" disabled="">Estado:</option>
+                                @foreach ($data["AppointmentStates"] as $appointmentstate)
+                                @if($appointmentstate->id == $data["Appointment"]->id_appointment_state)
+                                <option selected value="{{$appointmentstate->id}}">{{$appointmentstate->description}}</option>
+                                @else
+                                <option value="{{$appointmentstate->id}}">{{$appointmentstate->description}}</option>
+                                @endif
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>

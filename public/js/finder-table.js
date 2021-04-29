@@ -7,7 +7,7 @@ $(document).ready(function () {
             let columna = $(this).attr("column-finder");
             let texto = $(this).val();
 
-            valoresFiltro[columna] = texto.toLowerCase();
+            valoresFiltro[columna] =(texto==null)? '': texto.toLowerCase();
         });
 
         return valoresFiltro;
