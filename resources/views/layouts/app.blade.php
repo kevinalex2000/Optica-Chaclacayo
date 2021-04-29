@@ -117,7 +117,7 @@
                                         <a href="{{route('users.create')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo usuario</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('clients.index')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de usuarios</a>
+                                        <a href="{{route('users.index')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de usuarios</a>
                                     </li>
                                 </ul>
                             </li>
