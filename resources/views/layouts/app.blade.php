@@ -96,6 +96,18 @@
                             </li>
 
                             <li>
+                                <a href="#" class="nav-btn-submenu"><i class="fas fa-building fa-fw"></i> &nbsp; Sucursal <i class="fas fa-chevron-down"></i></a>
+                                <ul>
+                                    <li>
+                                        <a href="{{route('office.create')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar sucursal</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('office.index')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de sucursales</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
                                 <a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Usuarios <i class="fas fa-chevron-down"></i></a>
                                 <ul>
                                     <li>
@@ -158,7 +170,7 @@
 	==============================================-->
 
 	<!-- jQuery V3.4.1 -->
-    
+
 	<script src="{{ asset('js/jquery-3.4.1.min.js') }}" ></script>
 
     <!-- popper -->
