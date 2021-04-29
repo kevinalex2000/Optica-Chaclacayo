@@ -23,11 +23,25 @@
 </div>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
+    <div class="row group-inputs-finder" target-table-id="table-user" >
+        <div class="col-md-3">
             <div class="form-group bmd-form-group">
-                <label for="inputSearch" class="bmd-label-floating">¿Qué usuario estas buscando? Filtre por DNI, nombre, apellido o telefono</label>
-                <input type="text" class="form-control input-find-in-table" name="busqueda-" target-table-id="table-user" maxlength="30">
+                <input placeholder="DNI" type="text" class="form-control input-finder" action="keyup" column-finder="dni" maxlength="30">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group bmd-form-group">
+                <input placeholder="Nombre" type="text" class="form-control input-finder" action="keyup" column-finder="name" maxlength="30">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group bmd-form-group">
+                <input placeholder="Usuario" type="text" class="form-control input-finder" action="keyup" column-finder="username" maxlength="30">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group bmd-form-group">
+                <input placeholder="Email" type="text" class="form-control input-finder" action="keyup" column-finder="email" maxlength="30">
             </div>
         </div>
     </div>
@@ -45,10 +59,11 @@
             <thead>
                 <tr class="text-center roboto-medium">
                     <th>#</th>
+                    <th>Imagen</th>
                     <th>DNI</th>
-                    <th>NOMBRE</th>
-                    <th>APELLIDO</th>
-                    <th>TELÉFONO</th>
+                    <th>USUARIO</th>
+                    <th>NOMBRE COMPLETO</th>
+                    <th>TELEFONO</th>
                     <th>EMAIL</th>
                     <th>ACTUALIZAR</th>
                     <th>ELIMINAR</th>
@@ -58,11 +73,18 @@
                 @foreach ($users as $index => $user)
                 <tr class="text-center" >
                     <td>{{$index+1}}</td>
-                    <td class="finder">{{$user->dni}}</td>
-                    <td class="finder">{{$user->name}}</td>
-                    <td class="finder">{{$user->lastname}}</td>
-                    <td class="finder">{{$user->phone}}</td>
-                    <td class="finder">{{$user->email}}</td>
+                    <td>
+                        @if($user->image)
+                        <img src="/assets/img/users/{{$user->id}}.{{$user->image}}" class="img-thumbnail" alt="">
+                        @else
+                        <img src="/assets/avatar/Avatar.png" class="img-thumbnail" >
+                        @endif
+                    </td>
+                    <td column-finder-name="dni">{{$user->dni}}</td>
+                    <td column-finder-name="username">{{$user->username}}</td>
+                    <td column-finder-name="name">{{$user->name}} {{$user->lastname}}</td>
+                    <td>{{$user->phone}}</td>
+                    <td column-finder-name="email">{{$user->email}}</td>
                     <td>
                         <a href="{{route('users.edit', $user->id)}}" class="btn btn-success">
                               <i class="fas fa-sync-alt"></i>

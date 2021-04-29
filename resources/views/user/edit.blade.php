@@ -28,7 +28,7 @@
 @endif
 <!-- Content -->
 <div class="container-fluid">
-    <form action="{{route('users.update', $data["User"]->id)}}" method="post" class="form-neon" autocomplete="off">
+    <form enctype="multipart/form-data" action="{{route('users.update', $data['User']->id)}}" method="post" class="form-neon" autocomplete="off">
         @csrf
         @method('put')
         <fieldset>
@@ -145,25 +145,22 @@
             </div>
         </fieldset>
         <br><br><br>
-        <!--<fieldset>
-            <p class="text-center">Para poder guardar los cambios en esta cuenta debe de ingresar su nombre de usuario y contraseña</p>
+        <fieldset>
+            <legend><i class="fas fa-image"></i> &nbsp; Foto/Imagen del Producto</legend>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12 col-md-6">
+                    <div class="col-12">
                         <div class="form-group">
-                            <label for="usuario_admin" class="bmd-label-floating">Nombre de usuario</label>
-                            <input type="text" pattern="[a-zA-Z0-9]{1,35}" class="form-control" name="usuario_admin" id="usuario_admin" maxlength="35" required="" >
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="form-group">
-                            <label for="clave_admin" class="bmd-label-floating">Contraseña</label>
-                            <input type="password" class="form-control" name="clave_admin" id="clave_admin" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100" required="" >
+                            <input type="file" class="form-control" name="image" accept="image/png,image/jpeg">
+                            <br>
+                            @if($data["User"]->image)
+                            <img src="/assets/img/users/{{$data['User']->id}}.{{$data['User']->image}}" class="img-fluid">
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
-        </fieldset>-->
+        </fieldset>
         <p class="text-center" style="margin-top: 40px;">
             <button type="submit" class="btn btn-raised btn-success btn-sm"><i class="fas fa-sync-alt"></i> &nbsp; ACTUALIZAR</button>
         </p>
