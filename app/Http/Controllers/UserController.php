@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Rol;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -13,6 +15,19 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function guardarImagenUsuario($fileName, $localFile){
+
+        if($localFile != null){
+            $public_path = public_path("/assets/img/users/".$fileName);
+    
+            Image::make($localFile)
+            ->resize(300,300)
+            ->save($public_path);
+        }
+    }
+
+
     public function index()
     {
         $users = User::all();
@@ -62,19 +77,26 @@ class UserController extends Controller
         if($userExist <= 1){
             if($password != ""){
                 if($password == $password_repeat){
+                    
+                    $extension = $request->hasFile("image") ? $request->file("image")->getClientOriginalExtension() : null;
+                    
                     $user = new User();
 
                     $user->dni = $request->post('dni');
                     $user->name = $request->post('name');
                     $user->lastname = $request->post('lastname');
                     $user->phone = $request->post('phone');
+                    $user->image = $extension;
                     $user->address = $request->post('address');
                     $user->email = $request->post('email');
                     $user->username = $request->post('username');
-                    $user->password = $request->post('password');
+                    $user->password = Hash::make($request->post('password'));
                     $user->id_rol = $request->post('id_rol');
 
                     $user->save();
+                    $filename = $user->id.'.'.$extension;
+                    $localFile = $request->file("image");
+                    $this->guardarImagenUsuario($filename, $localFile);
 
                     $messageResult = array(
                         "type" => "success",
@@ -87,29 +109,7 @@ class UserController extends Controller
                         "message" => "<i class='fas fa-exclamation-triangle mr-2'></i> Las contraseñas no coinciden"
                     );
                 }
-
             }
-            else{
-                $user = new User();
-
-                $user->dni = $request->post('dni');
-                $user->name = $request->post('name');
-                $user->lastname = $request->post('lastname');
-                $user->phone = $request->post('phone');
-                $user->address = $request->post('address');
-                $user->email = $request->post('email');
-                $user->username = $request->post('username');
-                $user->id_rol = $request->post('id_rol');
-
-                $user->save();
-
-                $messageResult = array(
-                    "type" => "success",
-                    "message" => "<i class='fas fa-check mr-2'></i> El Usuario <b>".$request->post('name')."</b> ha sido creado exitosamente"
-                );
-            }
-
-
         }else{
             $messageResult = array(
                 "type" => "warning",
@@ -154,7 +154,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $emailExist = User::where('email', $request->post('email'))->count();
-        if($emailExist > 0){
+        if($emailExist > 1){
             $messageResult = array(
                 "type" => "warning",
                 "message" => "<i class='fas fa-exclamation-triangle mr-2'></i> No se ha podido editar el usuario debido que el email <b>".$request->post('email')."</b> ya esta siendo utilizado"
@@ -162,7 +162,7 @@ class UserController extends Controller
             return redirect("/users/".$id."/edit")->with('messageResult', $messageResult);
         }
         $usernameExist = User::where('username', $request->post('username'))->count();
-        if($usernameExist > 0){
+        if($usernameExist > 1){
             $messageResult = array(
                 "type" => "warning",
                 "message" => "<i class='fas fa-exclamation-triangle mr-2'></i> No se ha podido editar el usuario debido que el nombre de usuario <b>".$request->post('username')."</b> ya esta siendo utilizado"
@@ -172,6 +172,9 @@ class UserController extends Controller
         $userExist = User::where('dni', $request->post('dni'))->count();
         $password = $request->post('password');
         $password_repeat = $request->post('password_repeat');
+
+        $extension = $request->hasFile("image") ? $request->file("image")->getClientOriginalExtension() :  null;
+
         // Si el usere con dni no existe o si es el mismo
         if($userExist <= 1){
             if($password != ""){
@@ -182,13 +185,17 @@ class UserController extends Controller
                     $user->name = $request->post('name');
                     $user->lastname = $request->post('lastname');
                     $user->phone = $request->post('phone');
+                    if ($extension!=null) $user->image = $extension;
                     $user->address = $request->post('address');
                     $user->email = $request->post('email');
                     $user->username = $request->post('username');
-                    $user->password = $request->post('password');
+                    $user->password = Hash::make($request->post('password'));
                     $user->id_rol = $request->post('id_rol');
 
                     $user->save();
+                    $filename = $user->id.'.'.$extension;
+                    $localFile = $request->file("image");
+                    $this->guardarImagenUsuario($filename, $localFile);
 
                     $messageResult = array(
                         "type" => "success",
@@ -211,11 +218,15 @@ class UserController extends Controller
                 $user->lastname = $request->post('lastname');
                 $user->phone = $request->post('phone');
                 $user->address = $request->post('address');
+                if ($extension!=null) $user->image = $extension;
                 $user->email = $request->post('email');
                 $user->username = $request->post('username');
                 $user->id_rol = $request->post('id_rol');
 
                 $user->save();
+                $filename = $user->id.'.'.$extension;
+                $localFile = $request->file("image");
+                $this->guardarImagenUsuario($filename, $localFile);
 
                 $messageResult = array(
                     "type" => "success",

@@ -520,3 +520,13 @@ table form {
     color: #3c3b3b;
 }
 /*----------  Keyframes  ----------*/
+
+.img-thumbnail {
+    max-width: 50px;
+    border-radius: 200px;
+}
+
+.table td,
+.table th {
+    vertical-align: middle;
+}

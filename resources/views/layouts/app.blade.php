@@ -56,9 +56,13 @@
                 <div class="full-box nav-lateral-content">
                     <figure class="full-box nav-lateral-avatar">
                         <i class="far fa-times-circle show-nav-lateral"></i>
+                        @if(Auth::user()->image)
+                        <img src="/assets/img/users/{{Auth::user()->id}}.{{Auth::user()->image}}" class="img-fluid" alt="Avatar">
+                        @else
                         <img src="/assets/avatar/Avatar.png" class="img-fluid" alt="Avatar">
+                        @endif
                         <figcaption class="roboto-medium text-center">
-                            {{ Auth::user()->name }} <br>
+                            {{ Auth::user()->name }} {{ Auth::user()->lastname }} <br>
                             <small class="roboto-condensed-light">
                             {{ Auth::user()->role->name }}
                             </small>
@@ -84,29 +88,16 @@
                             </li>
 
                             <li>
-                                <a href="#" class="nav-btn-submenu"><i class="fas fa-pallet fa-fw"></i> &nbsp; Items <i class="fas fa-chevron-down"></i></a>
+                                <a href="#" class="nav-btn-submenu"><i class="fas fa-box fa-fw"></i> &nbsp; Productos <i class="fas fa-chevron-down"></i></a>
                                 <ul>
                                     <li>
-                                        <a href="/items/add"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar item</a>
+                                        <a href="/items/add"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Producto</a>
                                     </li>
                                     <li>
-                                        <a href="/items"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de items</a>
+                                        <a href="/items"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Productos</a>
                                     </li>
                                 </ul>
                             </li>
-
-                            <li>
-                                <a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Usuarios <i class="fas fa-chevron-down"></i></a>
-                                <ul>
-                                    <li>
-                                        <a href="/users/create"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo usuario</a>
-                                    </li>
-                                    <li>
-                                        <a href="/users"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de usuarios</a>
-                                    </li>
-                                </ul>
-                            </li>
-
                             <li>
                                 <a href="#" class="nav-btn-submenu"><i class="fas  fa-calendar-check fa-fw"></i> &nbsp; Citas <i class="fas fa-chevron-down"></i></a>
                                 <ul>
@@ -118,6 +109,19 @@
                                     </li>
                                 </ul>
                             </li>
+
+                            <li>
+                                <a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Usuarios <i class="fas fa-chevron-down"></i></a>
+                                <ul>
+                                    <li>
+                                        <a href="{{route('users.create')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo usuario</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('clients.index')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de usuarios</a>
+                                    </li>
+                                </ul>
+                            </li>
+
 
                             <li>
                                 <a href="/company"><i class="fas fa-store-alt fa-fw"></i> &nbsp; Empresa</a>
@@ -133,7 +137,7 @@
                     <a href="#" class="float-left show-nav-lateral">
                         <i class="fas fa-exchange-alt"></i>
                     </a>
-                    <a href="user-update.html">
+                    <a href="{{route('users.edit', Auth::user()->id)}}">
                         <i class="fas fa-user-cog"></i>
                     </a>
 

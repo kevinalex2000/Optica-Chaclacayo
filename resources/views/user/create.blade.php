@@ -27,7 +27,7 @@
 @endif
 <!-- Content -->
 <div class="container-fluid">
-    <form method="post" action="{{route('users.store')}}" class="form-neon" autocomplete="off">
+    <form method="post" action="{{route('users.store')}}" enctype="multipart/form-data" class="form-neon" autocomplete="off">
         @csrf
         <fieldset>
             <legend><i class="far fa-address-card"></i> &nbsp; Información personal</legend>
@@ -109,12 +109,25 @@
                         <p><span class="badge {{$rol->leyend}}">{{$rol->name}}</span> {{$rol->description}}</p>
                         @endforeach
                         <div class="form-group">
-                            <select required class="form-control" name="usuario_privilegio_reg">
+                            <select required class="form-control" name="id_rol">
                                 <option value="" selected="" disabled="">Seleccione una opción</option>
                                 @foreach ($rols as $rol)
                                 <option value="{{$rol->id}}">{{$rol->name}}</option>
                                 @endforeach
                             </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <br><br><br>
+        <fieldset>
+            <legend><i class="fas fa-image"></i> &nbsp; Foto/Imagen del Producto</legend>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="file" accept="image/png,image/jpeg" class="form-control" name="image">
                         </div>
                     </div>
                 </div>
