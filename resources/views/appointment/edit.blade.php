@@ -107,7 +107,7 @@
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="cliente_direccion" class="bmd-label-floating">Precio</label>
-                            <input type="number" class="form-control" name="precio" id="cliente_direccion" maxlength="150" value="{{$data["Appointment"]->price}}" required>
+                            <input type="number" class="form-control" name="precio" id="cliente_direccion" step="any" value="{{$data["Appointment"]->price}}" required>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
