@@ -36,3 +36,5 @@ Route::resource('/users', '\App\Http\Controllers\UserController');
 Route::resource('/clients', '\App\Http\Controllers\ClientController');
 
 Route::resource('/appointment', '\App\Http\Controllers\AppointmentController');
+
+Route::resource('/products', '\App\Http\Controllers\ProductController');

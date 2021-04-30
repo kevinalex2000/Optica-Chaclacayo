@@ -17,13 +17,20 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string("code")->unique();
             $table->string("name");
+            $table->string("trademark")->nullable();
+            $table->string("material")->nullable();
             $table->string("image")->nullable();
             $table->string("description")->nullable();
             $table->integer("stock_initial");
             $table->integer("stock");
             $table->float("price");
             $table->boolean("is_enabled")->default(1);
+            $table->unsignedBigInteger("id_category")->nullable();
             $table->timestamps();
+            $table->foreign('id_category')
+                    ->references('id')
+                    ->on('categories')
+                    ->onDelete('set null');
         });
     }
 

@@ -91,10 +91,10 @@
                                 <a href="#" class="nav-btn-submenu"><i class="fas fa-box fa-fw"></i> &nbsp; Productos <i class="fas fa-chevron-down"></i></a>
                                 <ul>
                                     <li>
-                                        <a href="/items/add"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Producto</a>
+                                        <a href="{{route('products.create')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Producto</a>
                                     </li>
                                     <li>
-                                        <a href="/items"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Productos</a>
+                                        <a href="{{route('products.index')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Productos</a>
                                     </li>
                                 </ul>
                             </li>
