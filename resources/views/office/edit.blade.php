@@ -15,7 +15,7 @@
 <div class="container-fluid">
     <ul class="full-box list-unstyled page-nav-tabs">
         <li>
-            <a class="active" href="{{route('office.create')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR CITA</a>
+            <a href="{{route('office.create')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR CITA</a>
         </li>
         <li>
             <a href="{{route('office.index')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE CITAS</a>
