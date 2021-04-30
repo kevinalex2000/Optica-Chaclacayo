@@ -7,6 +7,8 @@ use App\Models\Rol;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Hash;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7;
 
 class UserController extends Controller
 {
@@ -18,13 +20,34 @@ class UserController extends Controller
 
     public function guardarImagenUsuario($fileName, $localFile){
 
-        if($localFile != null){
-            $public_path = public_path("/assets/img/users/".$fileName);
-    
-            Image::make($localFile)
-            ->resize(300,300)
-            ->save($public_path);
-        }
+        if($localFile == null)
+            return null;
+
+        $client = new Client();
+        $url = "https://api.imgbb.com/1/upload";
+        $token = "b62fbc00a3e7f820ef0326921880846b";
+
+        $response = $client->request('POST', $url, [
+            'multipart' => [
+                [
+                    'name' => 'key',
+                    'contents' => $token
+                ],
+                [
+                    'name' => 'name',
+                    'contents' => $fileName
+                ],
+                [
+                    'name' => 'image',
+                    'contents' => Psr7\Utils::tryFopen($localFile, 'r')
+                ]
+            ],
+            'verify'  => false,
+        ]);
+        
+        $responseBody = json_decode($response->getBody());
+
+        return $responseBody->data->display_url;
     }
 
 
@@ -78,15 +101,12 @@ class UserController extends Controller
             if($password != ""){
                 if($password == $password_repeat){
                     
-                    $extension = $request->hasFile("image") ? $request->file("image")->getClientOriginalExtension() : null;
-                    
                     $user = new User();
 
                     $user->dni = $request->post('dni');
                     $user->name = $request->post('name');
                     $user->lastname = $request->post('lastname');
                     $user->phone = $request->post('phone');
-                    $user->image = $extension;
                     $user->address = $request->post('address');
                     $user->email = $request->post('email');
                     $user->username = $request->post('username');
@@ -94,9 +114,12 @@ class UserController extends Controller
                     $user->id_rol = $request->post('id_rol');
 
                     $user->save();
-                    $filename = $user->id.'.'.$extension;
+
+                    $filename = $user->id;
                     $localFile = $request->file("image");
-                    $this->guardarImagenUsuario($filename, $localFile);
+                    $user->image = $this->guardarImagenUsuario($filename, $localFile);
+
+                    $user->save();
 
                     $messageResult = array(
                         "type" => "success",
@@ -173,8 +196,6 @@ class UserController extends Controller
         $password = $request->post('password');
         $password_repeat = $request->post('password_repeat');
 
-        $extension = $request->hasFile("image") ? $request->file("image")->getClientOriginalExtension() :  null;
-
         // Si el usere con dni no existe o si es el mismo
         if($userExist <= 1){
             if($password != ""){
@@ -185,7 +206,6 @@ class UserController extends Controller
                     $user->name = $request->post('name');
                     $user->lastname = $request->post('lastname');
                     $user->phone = $request->post('phone');
-                    if ($extension!=null) $user->image = $extension;
                     $user->address = $request->post('address');
                     $user->email = $request->post('email');
                     $user->username = $request->post('username');
@@ -193,9 +213,12 @@ class UserController extends Controller
                     $user->id_rol = $request->post('id_rol');
 
                     $user->save();
-                    $filename = $user->id.'.'.$extension;
+
+                    $filename = $user->id;
                     $localFile = $request->file("image");
-                    $this->guardarImagenUsuario($filename, $localFile);
+                    $user->image = $this->guardarImagenUsuario($filename, $localFile);
+
+                    $user->save();
 
                     $messageResult = array(
                         "type" => "success",
@@ -218,15 +241,17 @@ class UserController extends Controller
                 $user->lastname = $request->post('lastname');
                 $user->phone = $request->post('phone');
                 $user->address = $request->post('address');
-                if ($extension!=null) $user->image = $extension;
                 $user->email = $request->post('email');
                 $user->username = $request->post('username');
                 $user->id_rol = $request->post('id_rol');
 
                 $user->save();
-                $filename = $user->id.'.'.$extension;
+
+                $filename = $user->id;
                 $localFile = $request->file("image");
-                $this->guardarImagenUsuario($filename, $localFile);
+                $user->image = $this->guardarImagenUsuario($filename, $localFile);
+
+                $user->save();
 
                 $messageResult = array(
                     "type" => "success",

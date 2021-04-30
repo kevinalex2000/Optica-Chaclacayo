@@ -75,7 +75,7 @@
                     <td>{{$index+1}}</td>
                     <td>
                         @if($user->image)
-                        <img src="/assets/img/users/{{$user->id}}.{{$user->image}}" class="img-thumbnail" alt="">
+                        <img src="{{$user->image}}" class="img-thumbnail" alt="">
                         @else
                         <img src="/assets/avatar/Avatar.png" class="img-thumbnail" >
                         @endif
