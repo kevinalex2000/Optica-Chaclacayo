@@ -57,7 +57,7 @@
                     <figure class="full-box nav-lateral-avatar">
                         <i class="far fa-times-circle show-nav-lateral"></i>
                         @if(Auth::user()->image)
-                        <img src="/assets/img/users/{{Auth::user()->id}}.{{Auth::user()->image}}" class="img-fluid" alt="Avatar">
+                        <img src="{{Auth::user()->image}}" class="img-fluid" alt="Avatar">
                         @else
                         <img src="/assets/avatar/Avatar.png" class="img-fluid" alt="Avatar">
                         @endif

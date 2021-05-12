@@ -154,7 +154,7 @@
                             <input type="file" class="form-control" name="image" accept="image/png,image/jpeg">
                             <br>
                             @if($data["User"]->image)
-                            <img src="/assets/img/users/{{$data['User']->id}}.{{$data['User']->image}}" class="img-fluid">
+                            <img src="{{$data['User']->image}}" class="img-fluid">
                             @endif
                         </div>
                     </div>
