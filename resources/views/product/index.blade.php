@@ -26,7 +26,7 @@
     <div class="row group-inputs-finder" target-table-id="table-product" >
         <div class="col-md-3">
             <div class="form-group bmd-form-group">
-                <input placeholder="name" type="text" class="form-control input-finder" action="keyup" column-finder="name" maxlength="30">
+                <input placeholder="Codigo" type="text" class="form-control input-finder" action="keyup" column-finder="codigo" maxlength="30">
             </div>
         </div>
         <div class="col-md-3">
@@ -36,12 +36,12 @@
         </div>
         <div class="col-md-3">
             <div class="form-group bmd-form-group">
-                <input placeholder="Usuario" type="text" class="form-control input-finder" action="keyup" column-finder="description" maxlength="30">
+                <input placeholder="Marca" type="text" class="form-control input-finder" action="keyup" column-finder="marca" maxlength="30">
             </div>
         </div>
         <div class="col-md-3">
             <div class="form-group bmd-form-group">
-                <input placeholder="Email" type="text" class="form-control input-finder" action="keyup" column-finder="email" maxlength="30">
+                <input placeholder="Categoria" type="text" class="form-control input-finder" action="keyup" column-finder="category" maxlength="30">
             </div>
         </div>
     </div>
@@ -59,30 +59,30 @@
             <thead>
                 <tr class="text-center roboto-medium">
                     <th>#</th>
-                    <th>Imagen</th>
+                    <th>CODIGO</th>
                     <th>NOMBRE</th>
-                    <th>DESCRIPCION</th>
+                    <th>MARCA</th>
+                    <th>MATERIAL</th>
                     <th>STOCK INICIAL</th>
                     <th>STOCK</th>
                     <th>PRECIO</th>
+                    <th>CATEGORIA</th>
+                    <th>ACTUALIZAR</th>
+                    <th>ELIMINAR</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($products as $index => $product)
                 <tr class="text-center" >
                     <td>{{$index+1}}</td>
-                    <td>
-                        @if($product->image)
-                        <img src="/assets/img/products/{{$product->id}}.{{$product->image}}" class="img-thumbnail" alt="">
-                        @else
-                        <img src="/assets/avatar/Avatar.png" class="img-thumbnail" >
-                        @endif
-                    </td>
+                    <td column-finder-name="codigo">{{$product->code}}</td>
                     <td column-finder-name="name">{{$product->name}}</td>
-                    <td column-finder-name="description">{{$product->description}}</td>
+                    <td column-finder-name="marca">{{$product->trademark}}</td>
+                    <td>{{$product->material}}</td>
                     <td>{{$product->stock_initial}}</td>
                     <td>{{$product->stock}}</td>
-                    <td column-finder-name="price">{{$product->price}}</td>
+                    <td>{{$product->price}}</td>
+                    <td column-finder-name="category">{{$product->category->name}}</td>
                     <td>
                         <a href="{{route('products.edit', $product->id)}}" class="btn btn-success">
                               <i class="fas fa-sync-alt"></i>
