@@ -530,3 +530,7 @@ table form {
 .table th {
     vertical-align: middle;
 }
+
+label {
+    font-size: 13px !important;
+}

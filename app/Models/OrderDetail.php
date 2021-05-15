@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class OrderDetail extends Model
 {
     use HasFactory;
 
-    protected $table = "categories";
-    
     protected $fillable = [
-        'name'
+        'id_order',
+        'id_form_category',
+        'value',
     ];
 
     public function formCategory(){
-        return $this->hasMany(FormCategory::Class);
+        return $this->belongsTo(FormCategory::Class, "id_form_category");
     }
 }

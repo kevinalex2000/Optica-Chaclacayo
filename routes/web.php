@@ -44,3 +44,19 @@ Route::resource('/office', '\App\Http\Controllers\OfficeController');
 Route::resource('/sales', '\App\Http\Controllers\SaleController');
 
 Route::get('/pdf/{id_sale}','\App\Http\Controllers\PDFController@PDF')->name('descargarPDF');
+
+// Rutas de Pedidos
+
+Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index'])->name('orders.index');
+
+Route::get('/orders/create', [App\Http\Controllers\OrderController::class, 'select_category'])->name('orders.select_category');
+
+Route::get('/orders/create/{idcategory}/{name_category}', [App\Http\Controllers\OrderController::class, 'create'])->name('orders.create');
+
+Route::post('/orders/create/', [App\Http\Controllers\OrderController::class, 'store'])->name('orders.store');
+
+Route::get('/orders/edit/{id}', [App\Http\Controllers\OrderController::class, 'edit'])->name('orders.edit');
+
+Route::put('/orders/{id}', [App\Http\Controllers\OrderController::class, 'update'])->name('orders.update');
+
+Route::delete('/orders/{id}', [App\Http\Controllers\OrderController::class, 'destroy'])->name('orders.destroy');

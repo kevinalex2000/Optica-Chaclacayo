@@ -25,6 +25,9 @@ class CreateCategoriesTable extends Migration
                 "name" => "Lentes de contacto"
             ],
             [
+                "name" => "Lentes de sol"
+            ],
+            [
                 "name" => "Lentes Oftálmicos"
             ],
             [
