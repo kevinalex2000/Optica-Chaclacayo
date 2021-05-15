@@ -88,12 +88,9 @@
                         </form>
                     </td>
                     <td>
-                        <form method="post" >
-                            @csrf
-                            <button type="submit" class="btn btn-primary">
-                                  <i class="fas fa-download"></i>
-                            </button>
-                        </form>
+                        <a href="{{route('descargarPDF',$sale->id)}}"><button type="submit" class="btn btn-primary">
+                                <i class="fas fa-download"></i>
+                            </button></a>
                     </td>
                 </tr>
                 @endforeach
