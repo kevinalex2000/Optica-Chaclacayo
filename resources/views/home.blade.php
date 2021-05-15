@@ -58,7 +58,7 @@
             <a href="{{route('users.index')}}">
             <div class="card text-center" style="width: 18rem;">
                 <br>
-                <p class="text-center"><i style="font-size: 50px;" class="fas  fa-calendar-check fa-fw"></i></p>
+                <p class="text-center"><i style="font-size: 50px;" class="fas  fa-user-secret fa-fw"></i></p>
                 <div class="card-body">
                     Usuarios
                 </div>
