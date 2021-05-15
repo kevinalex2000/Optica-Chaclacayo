@@ -7,9 +7,6 @@
     <h3 class="text-left">
         <i class="fas fa-sync-alt fa-fw"></i> &nbsp; ACTUALIZAR CLIENTE
     </h3>
-    <p class="text-justify">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem odit amet asperiores quis minus, dolorem repellendus optio doloremque error a omnis soluta quae magnam dignissimos, ipsam, temporibus sequi, commodi accusantium!
-    </p>
 </div>
 
 <div class="container-fluid">
@@ -76,6 +73,6 @@
             <button type="submit" class="btn btn-raised btn-success btn-sm"><i class="fas fa-sync-alt"></i> &nbsp; ACTUALIZAR</button>
         </p>
     </form>
-</div>	
+</div>
 
 @endsection

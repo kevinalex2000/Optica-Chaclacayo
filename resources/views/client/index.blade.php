@@ -7,9 +7,6 @@
     <h3 class="text-left">
 		<i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE CLIENTES
     </h3>
-    <p class="text-justify">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem odit amet asperiores quis minus, dolorem repellendus optio doloremque error a omnis soluta quae magnam dignissimos, ipsam, temporibus sequi, commodi accusantium!
-    </p>
 </div>
 
 <div class="container-fluid">
@@ -80,14 +77,14 @@
                     <td column-finder-name="lastname">{{$client->lastname}}</td>
                     <td column-finder-name="phone">{{$client->phone}}</td>
                     <td>
-                        <button type="button" class="btn btn-info" data-toggle="popover" data-trigger="hover" title="" 
+                        <button type="button" class="btn btn-info" data-toggle="popover" data-trigger="hover" title=""
                         data-content="{{$client->address}}" data-original-title="{{$client->name}}">
 						    <i class="fas fa-info-circle"></i>
 						</button>
                     </td>
                     <td>
                         <a href="{{route('clients.edit', $client->id)}}" class="btn btn-success">
-                            <i class="fas fa-sync-alt"></i>	
+                            <i class="fas fa-sync-alt"></i>
                             <div class="ripple-container"></div>
                         </a>
                     </td>

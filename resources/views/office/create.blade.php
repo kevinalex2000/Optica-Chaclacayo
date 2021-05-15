@@ -5,20 +5,17 @@
 <!-- Page header -->
 <div class="full-box page-header">
     <h3 class="text-left">
-        <i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR CITA
+        <i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR SUCURSAL
     </h3>
-    <p class="text-justify">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem odit amet asperiores quis minus, dolorem repellendus optio doloremque error a omnis soluta quae magnam dignissimos, ipsam, temporibus sequi, commodi accusantium!
-    </p>
 </div>
 
 <div class="container-fluid">
     <ul class="full-box list-unstyled page-nav-tabs">
         <li>
-            <a class="active" href="{{route('office.create')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR CITA</a>
+            <a class="active" href="{{route('office.create')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR SUCURSAL</a>
         </li>
         <li>
-            <a href="{{route('office.index')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE CITAS</a>
+            <a href="{{route('office.index')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE SUCURSALES</a>
         </li>
     </ul>
 </div>
