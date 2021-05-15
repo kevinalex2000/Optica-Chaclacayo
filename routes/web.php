@@ -38,4 +38,13 @@ Route::resource('/clients', '\App\Http\Controllers\ClientController');
 Route::resource('/appointment', '\App\Http\Controllers\AppointmentController');
 
 Route::resource('/products', '\App\Http\Controllers\ProductController');
+
 Route::resource('/office', '\App\Http\Controllers\OfficeController');
+
+Route::resource('/sales', '\App\Http\Controllers\SaleController');
+
+Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index'])->name('orders.index');
+
+Route::get('/orders/create', [App\Http\Controllers\OrderController::class, 'select_category'])->name('orders.select_category');
+
+Route::get('/orders/create/{idcategory}/{name_category}', [App\Http\Controllers\OrderController::class, 'create'])->name('orders.create');

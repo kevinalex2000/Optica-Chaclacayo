@@ -48,6 +48,16 @@ $(document).ready(function () {
             }
         });
     });
+
+    $("#select_category_order").change(function () {
+        if ($(this).val() != "") {
+            location.href =
+                "/orders/create/" +
+                $(this).val() +
+                "/" +
+                $("option:selected", this).text();
+        }
+    });
 });
 (function ($) {
     $(window).on("load", function () {
