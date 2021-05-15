@@ -26,6 +26,11 @@
 <div class="container-fluid">
     <form method="post" action="{{route('sales.store')}}" enctype="multipart/form-data" class="form-neon" autocomplete="off">
         @csrf
+        
+        @if($Order)
+        <input value="{{$Order->id}}" type="hidden" name="id_order">
+        @endif
+
         <fieldset>
             <legend><i class="fas fa-box fa-fw"></i> &nbsp; Detalles de Venta</legend>
             <div class="container-fluid">
@@ -42,7 +47,15 @@
                             <select required class="form-control" id="producto" name="id_product" required>
                                 <option value="" selected="" disabled="">Seleccione un producto</option>
                                 @foreach ($data["Products"] as $product)
-                                <option value="{{$product->id.'?'.$product->price}}">{{$product->name}}</option>
+                                    @if($Order)
+                                        @if($Order->id_product == $product->id)
+                                        <option value="{{$product->id.'?'.$product->price}}" selected>{{$product->name}}</option>
+                                        @else
+                                        <option value="{{$product->id.'?'.$product->price}}">{{$product->name}}</option>
+                                        @endif
+                                    @else
+                                    <option value="{{$product->id.'?'.$product->price}}">{{$product->name}}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
@@ -52,7 +65,15 @@
                             <select required class="form-control" name="id_client" required>
                                 <option value="" selected="" disabled="">Seleccione un cliente</option>
                                 @foreach ($data["Clients"] as $client)
-                                <option value="{{$client->id}}">{{$client->name}}</option>
+                                    @if($Order)
+                                        @if($Order->id_client == $client->id)
+                                        <option value="{{$client->id}}" selected>{{$client->name}}</option>
+                                        @else
+                                        <option value="{{$client->id}}">{{$client->name}}</option>
+                                        @endif
+                                    @else
+                                    <option value="{{$client->id}}">{{$client->name}}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
@@ -62,7 +83,15 @@
                             <select required class="form-control" name="id_office" required>
                                 <option value="" selected="" disabled="">Seleccione una Sucursal</option>
                                 @foreach ($data["Offices"] as $office)
-                                <option value="{{$office->id}}">{{$office->name}}</option>
+                                    @if($Order)
+                                        @if($Order->id_office == $office->id)
+                                        <option value="{{$office->id}}" selected>{{$office->name}}</option>
+                                        @else
+                                        <option value="{{$office->id}}">{{$office->name}}</option>
+                                        @endif
+                                    @else
+                                    <option value="{{$office->id}}">{{$office->name}}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
@@ -75,14 +104,19 @@
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="form-group">
-                            <label for="PRODUCTO_direccion" class="bmd-label-floating">Fecha de Entrega</label>
-                            <input type="date" step="any" class="form-control" name="fecha"  maxlength="190">
+                            <label>Fecha de Entrega</label>
+                            <input type="date" step="any" class="form-control" name="fecha"  maxlength="190" required>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="form-group">
-                            <label for="PRODUCTO_direccion" class="bmd-label-floating">Pago Total</label>
-                            <input type="number" step="any" id="precio_total" class="form-control" name="total" maxlength="190" readonly>
+                            <label class="bmd-label-floating">Pago Total</label>
+                            
+                            @if($Order)
+                            <input value="{{$Order->product->price}}" type="number" step="any" id="precio_total" class="form-control" name="total" maxlength="190" readonly >
+                            @else
+                            <input type="number" step="any" id="precio_total" class="form-control" name="total" maxlength="190" readonly >
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class PDFController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function PDF($id){
         $sales = Sale::find($id);
         $pdf = \PDF::loadView('ventapdf',array("sale" =>$sales));

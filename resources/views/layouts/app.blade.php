@@ -50,6 +50,9 @@
 <body>
     <div id="app">
 
+        @php
+        $idrol = Auth::user()->role->id;
+        @endphp
 
         <!-- Main container -->
         <main class="full-box main-container">
@@ -125,6 +128,8 @@
                                     </li>
                                 </ul>
                             </li>
+                            
+                            @if($idrol == 1)
                             <li>
                                 <a href="#" class="nav-btn-submenu"><i class="fas fa-building fa-fw"></i> &nbsp; Sucursal <i class="fas fa-chevron-down"></i></a>
                                 <ul>
@@ -136,6 +141,7 @@
                                     </li>
                                 </ul>
                             </li>
+                            @endif
 
                             <li>
                                 <a href="#" class="nav-btn-submenu"><i class="fas  fa-calendar-check fa-fw"></i> &nbsp; Citas <i class="fas fa-chevron-down"></i></a>
@@ -149,6 +155,7 @@
                                 </ul>
                             </li>
 
+                            @if($idrol == 1)
                             <li>
                                 <a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Usuarios <i class="fas fa-chevron-down"></i></a>
                                 <ul>
@@ -160,7 +167,7 @@
                                     </li>
                                 </ul>
                             </li>
-
+                            @endif
                         </ul>
                     </nav>
                 </div>

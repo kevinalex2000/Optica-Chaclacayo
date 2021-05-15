@@ -9,9 +9,15 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Hash;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -53,6 +59,9 @@ class UserController extends Controller
 
     public function index()
     {
+        if (!Auth::user()->id_rol == 1) {
+            abort(403, "No tienes autorización para ingresar.");
+        }
         $users = User::all();
         return view('user.index')->with('users', $users);
     }
@@ -64,6 +73,9 @@ class UserController extends Controller
      */
     public function create()
     {
+        if (!Auth::user()->id_rol == 1) {
+            abort(403, "No tienes autorización para ingresar.");
+        }
         $rols = Rol::all();
         return view('user.create')->with('rols', $rols);
     }
@@ -76,6 +88,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Auth::user()->id_rol == 1) {
+            abort(403, "No tienes autorización para ingresar.");
+        }
         $emailExist = User::where('email', $request->post('email'))->count();
         if($emailExist > 0){
             $messageResult = array(
@@ -162,6 +177,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        if (!Auth::user()->id_rol == 1) {
+            abort(403, "No tienes autorización para ingresar.");
+        }
         $user = User::find($id);
         $rols = Rol::all();
         return view('user.edit')->with('data',array("User" =>$user, "Rols" => $rols));
@@ -176,6 +194,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (!Auth::user()->id_rol == 1) {
+            abort(403, "No tienes autorización para ingresar.");
+        }
         $emailExist = User::where('email', $request->post('email'))->count();
         if($emailExist > 1){
             $messageResult = array(
@@ -278,6 +299,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        if (!Auth::user()->id_rol == 1) {
+            abort(403, "No tienes autorización para ingresar.");
+        }
         $user = User::find($id);
         $user->delete();
 
