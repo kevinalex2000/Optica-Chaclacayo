@@ -19,4 +19,20 @@ class Order extends Model
         'date_delivered',
         'prepayment'
     ];
+
+    public function client(){
+        return $this->belongsTo(Client::Class, "id_client");
+    }
+
+    public function product(){
+        return $this->belongsTo(Product::Class, "id_product");
+    }
+    
+    public function office(){
+        return $this->belongsTo(Office::Class, "id_office");
+    }
+    
+    public function user(){
+        return $this->belongsTo(User::Class, "id_user");
+    }
 }

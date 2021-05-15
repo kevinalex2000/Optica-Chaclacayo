@@ -11,7 +11,7 @@
 
 <!-- Content here-->
 <div class="container-fluid">
-    <form method="post" action="{{route('clients.store')}}" autocomplete="off">
+    <form method="post" action="{{route('orders.store')}}" autocomplete="off">
         @csrf
         <div  class="form-neon">
             <fieldset>
@@ -21,7 +21,7 @@
                             <div class="form-group pt-0">
                                 <legend> Categoria</legend>
                             
-                                <select id="select_category_order" class="form-control" name="address" required>
+                                <select id="select_category_order" class="form-control" name="category" required>
                                     @foreach ($data["categories"] as $category)
                                         @if($data["idcategory"] == $category->id)
                                         <option value="{{$category->id}}" selected>{{$category->name}}</option>
@@ -59,7 +59,7 @@
                                     Producto
                                 </label>
                             
-                                <select class="form-control" name="client" required>
+                                <select class="form-control" name="product" required>
                                     <option value="">Seleccione el Producto</option>
                                     @foreach ($data["products"] as $product)
                                         <option value="{{$product->id}}">{{$product->name}}</option>
@@ -124,17 +124,20 @@
                                     <label for="cliente_dni" class="text-capitalize">{{$formCategory->field}}:</label>
                                 </div>
                                 @if($formCategory->type == "text")
-                                <input name="campos-detalle-{{$formCategory->id}}" class="form-control" type="text" required>
+                                <input name="{{$formCategory->id}}" class="value-details form-control" type="text" required>
                                 @endif 
                                 @if($formCategory->type == "select")
                                     @foreach(explode("&",$formCategory->values) as $value)
-                                    <input name="campos-detalle-{{$formCategory->id}}" type="radio" required> {{$value}} &nbsp; 
+                                    <input name="{{$formCategory->id}}" class="value-details" type="radio" value="{{$value}}" required> {{$value}} &nbsp; 
                                     @endforeach
                                 @endif 
                             </div>
                         </div>
                         
                         @endforeach
+
+                        <input type="hidden" id="order_details" name="order_details">
+
                     </div>
                 </div>
             </fieldset>

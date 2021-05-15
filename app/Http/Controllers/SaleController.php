@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
-use Illuminate\Http\Request;
-=======
 use App\Models\Client;
 use App\Models\Office;
 use App\Models\Product;
@@ -12,7 +9,6 @@ use App\Models\Sale;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
->>>>>>> f144bb2ec463f9e7bab2981370daf7b85476a99e
 
 class SaleController extends Controller
 {
@@ -23,12 +19,8 @@ class SaleController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-        //
-=======
         $sales = Sale::all();
         return view('sale.index')->with('sales', $sales);
->>>>>>> f144bb2ec463f9e7bab2981370daf7b85476a99e
     }
 
     /**
@@ -38,9 +30,6 @@ class SaleController extends Controller
      */
     public function create()
     {
-<<<<<<< HEAD
-        //
-=======
         $codigo = Sale::select('code')->orderBy('id', 'DESC')->take(1)->get();
         if(count($codigo) == 0){
             $codigototal = 10000;
@@ -52,7 +41,6 @@ class SaleController extends Controller
         $offices = Office::all();
         $products = Product::all();
         return view('sale.create')->with('data',array("Clients" => $clients,"Offices" => $offices,"Products" => $products,"Codigo" => $codigototal));
->>>>>>> f144bb2ec463f9e7bab2981370daf7b85476a99e
     }
 
     /**
@@ -63,9 +51,6 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
-        //
-=======
         //Hacemos el descuento al producto
         $product_stock = Product::select('stock')->where('id','=', $request->post('id_product'))->get();
         $stock_actual = (float)$product_stock[0]["stock"] - 1;
@@ -92,7 +77,6 @@ class SaleController extends Controller
             );
 
         return redirect("/sales/create")->with('messageResult', $messageResult);
->>>>>>> f144bb2ec463f9e7bab2981370daf7b85476a99e
     }
 
     /**
@@ -114,16 +98,12 @@ class SaleController extends Controller
      */
     public function edit($id)
     {
-<<<<<<< HEAD
-        //
-=======
         $sales = Sale::find($id);
         $clients = Client::all();
         $offices = Office::all();
         $products = Product::all();
         $users = User::all();
         return view('sale.edit')->with('data',array("Clients" => $clients,"Offices" => $offices,"Products" => $products,"Sales" => $sales,"Users" => $users));
->>>>>>> f144bb2ec463f9e7bab2981370daf7b85476a99e
     }
 
     /**
@@ -135,9 +115,6 @@ class SaleController extends Controller
      */
     public function update(Request $request, $id)
     {
-<<<<<<< HEAD
-        //
-=======
             $sales = Sale::find($id);
             $sales->code = $request->post('codigo');
             $producto_id = explode("?",$request->post('id_product'));
@@ -156,7 +133,6 @@ class SaleController extends Controller
             );
 
         return redirect("/sales/".$id."/edit")->with('messageResult', $messageResult);
->>>>>>> f144bb2ec463f9e7bab2981370daf7b85476a99e
     }
 
     /**
@@ -167,9 +143,6 @@ class SaleController extends Controller
      */
     public function destroy($id)
     {
-<<<<<<< HEAD
-        //
-=======
         $sale = Sale::find($id);
         $sale->delete();
 
@@ -183,6 +156,5 @@ class SaleController extends Controller
 
     public function dowload($id){
 
->>>>>>> f144bb2ec463f9e7bab2981370daf7b85476a99e
     }
 }
