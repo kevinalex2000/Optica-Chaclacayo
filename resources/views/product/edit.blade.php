@@ -10,7 +10,7 @@
 <div class="container-fluid">
     <ul class="full-box list-unstyled page-nav-tabs">
         <li>
-            <a class="active" href="{{route('products.index')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; NUEVO PRODUCTO</a>
+            <a href="{{route('products.index')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; NUEVO PRODUCTO</a>
         </li>
         <li>
             <a href="{{route('products.index')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE PRODUCTOS</a>

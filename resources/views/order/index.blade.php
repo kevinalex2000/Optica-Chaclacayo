@@ -100,6 +100,10 @@
                         </form>
                     </td>
                     <td>
+                    
+                        @if($order->is_delivered)
+                        Completado
+                        @else
                         <form method="get" action="{{route('sales.create')}}">
                             <input type="hidden" name="pedido" value="{{$order->id}}">
                             <button type="submit" class="btn btn-warning">
@@ -107,6 +111,7 @@
                                 <b>Agregar a Venta</b>
                             </button>
                         </form>
+                        @endif
                     </td>
                     <td style="display: none" column-finder-name="fecha">{{$order->date_delivered}}</td>
                 </tr>

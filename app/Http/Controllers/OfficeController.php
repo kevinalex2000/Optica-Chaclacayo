@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Office;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
+use Illuminate\Support\Facades\Auth;
 
 class OfficeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +22,10 @@ class OfficeController extends Controller
      */
     public function index()
     {
+        if (!Auth::user()->id_rol == 1) {
+            abort(403, "No tienes autorización para ingresar.");
+        }
+
         $users = User::all();
         $office = Office::all();
         return view('office.index')->with('data',array("Offices" => $office,"Users" => $users));
@@ -27,6 +38,10 @@ class OfficeController extends Controller
      */
     public function create()
     {
+        if (!Auth::user()->id_rol == 1) {
+            abort(403, "No tienes autorización para ingresar.");
+        }
+
         $users = User::all();
         return view('office.create')->with("users" , $users);
     }
@@ -39,6 +54,10 @@ class OfficeController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Auth::user()->id_rol == 1) {
+            abort(403, "No tienes autorización para ingresar.");
+        }
+
             $office = new Office();
 
             $office->name = $request->post('name');
@@ -75,6 +94,10 @@ class OfficeController extends Controller
      */
     public function edit($id)
     {
+        if (!Auth::user()->id_rol == 1) {
+            abort(403, "No tienes autorización para ingresar.");
+        }
+
         $offices = Office::find($id);
         $users = User::all();
         return view('office.edit')->with('data',array("Office" => $offices,"Users" => $users));
@@ -89,6 +112,10 @@ class OfficeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (!Auth::user()->id_rol == 1) {
+            abort(403, "No tienes autorización para ingresar.");
+        }
+
         $office = Office::find($id);
 
         $office->name = $request->post('name');
@@ -114,6 +141,10 @@ class OfficeController extends Controller
      */
     public function destroy($id)
     {
+        if (!Auth::user()->id_rol == 1) {
+            abort(403, "No tienes autorización para ingresar.");
+        }
+        
         $office = Office::find($id);
         $office->delete();
 

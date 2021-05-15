@@ -31,7 +31,7 @@ Route::get('/password/reset', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/users', '\App\Http\Controllers\UserController');
+Route::resource('/users', '\App\Http\Controllers\UserController')->middleware('auth', 'role:1');
 
 Route::resource('/clients', '\App\Http\Controllers\ClientController');
 
@@ -39,7 +39,7 @@ Route::resource('/appointment', '\App\Http\Controllers\AppointmentController');
 
 Route::resource('/products', '\App\Http\Controllers\ProductController');
 
-Route::resource('/office', '\App\Http\Controllers\OfficeController');
+Route::resource('/office', '\App\Http\Controllers\OfficeController')->middleware('auth', 'role:1');
 
 Route::resource('/sales', '\App\Http\Controllers\SaleController');
 
