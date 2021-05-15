@@ -16,6 +16,13 @@ class CreateOrderDetailsTable extends Migration
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger("id_order")->nullable();
+            $table->unsignedBigInteger("id_form_category")->nullable();
+            $table->string('value')->nullable();
+            $table->foreign('id_form_category')
+                    ->references('id')
+                    ->on('form_categories')
+                    ->onDelete('set null');
         });
     }
 

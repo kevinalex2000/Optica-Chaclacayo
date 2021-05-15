@@ -160,11 +160,18 @@
                                     </li>
                                 </ul>
                             </li>
-
-
                             <li>
-                                <a href="/company"><i class="fas fa-store-alt fa-fw"></i> &nbsp; Empresa</a>
+                                <a href="#" class="nav-btn-submenu"><i class="fas  fa-store-alt fa-fw"></i> &nbsp; Ventas <i class="fas fa-chevron-down"></i></a>
+                                <ul>
+                                    <li>
+                                        <a href="{{route('sales.create')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; Nueva venta</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('sales.index')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de ventas</a>
+                                    </li>
+                                </ul>
                             </li>
+
                         </ul>
                     </nav>
                 </div>
