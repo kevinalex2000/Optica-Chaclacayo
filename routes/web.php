@@ -31,7 +31,7 @@ Route::get('/password/reset', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/users', '\App\Http\Controllers\UserController');
+Route::resource('/users', '\App\Http\Controllers\UserController')->middleware('auth', 'role:1');
 
 Route::resource('/clients', '\App\Http\Controllers\ClientController');
 
@@ -39,8 +39,24 @@ Route::resource('/appointment', '\App\Http\Controllers\AppointmentController');
 
 Route::resource('/products', '\App\Http\Controllers\ProductController');
 
-Route::resource('/office', '\App\Http\Controllers\OfficeController');
+Route::resource('/office', '\App\Http\Controllers\OfficeController')->middleware('auth', 'role:1');
 
 Route::resource('/sales', '\App\Http\Controllers\SaleController');
 
 Route::get('/pdf/{id_sale}','\App\Http\Controllers\PDFController@PDF')->name('descargarPDF');
+
+// Rutas de Pedidos
+
+Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index'])->name('orders.index');
+
+Route::get('/orders/create', [App\Http\Controllers\OrderController::class, 'select_category'])->name('orders.select_category');
+
+Route::get('/orders/create/{idcategory}/{name_category}', [App\Http\Controllers\OrderController::class, 'create'])->name('orders.create');
+
+Route::post('/orders/create/', [App\Http\Controllers\OrderController::class, 'store'])->name('orders.store');
+
+Route::get('/orders/edit/{id}', [App\Http\Controllers\OrderController::class, 'edit'])->name('orders.edit');
+
+Route::put('/orders/{id}', [App\Http\Controllers\OrderController::class, 'update'])->name('orders.update');
+
+Route::delete('/orders/{id}', [App\Http\Controllers\OrderController::class, 'destroy'])->name('orders.destroy');

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Optica Chaclacayo') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -42,11 +42,17 @@
     <!-- General Styles -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
+	<!-- jQuery V3.4.1 -->
+
+	<script src="{{ asset('js/jquery-3.4.1.min.js') }}" ></script>
 
 </head>
 <body>
     <div id="app">
 
+        @php
+        $idrol = Auth::user()->role->id;
+        @endphp
 
         <!-- Main container -->
         <main class="full-box main-container">
@@ -88,7 +94,7 @@
                             </li>
 
                             <li>
-                                <a href="#" class="nav-btn-submenu"><i class="fas fa-box fa-fw"></i> &nbsp; Productos <i class="fas fa-chevron-down"></i></a>
+                                <a href="#" class="nav-btn-submenu"><i class="fas fa-boxes fa-fw"></i> &nbsp; Productos <i class="fas fa-chevron-down"></i></a>
                                 <ul>
                                     <li>
                                         <a href="{{route('products.create')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Producto</a>
@@ -98,6 +104,32 @@
                                     </li>
                                 </ul>
                             </li>
+
+                            <li>
+                                <a href="#" class="nav-btn-submenu"><i class="fas fa-box fa-fw"></i> &nbsp; Pedidos <i class="fas fa-chevron-down"></i></a>
+                                <ul>
+                                    <li>
+                                        <a href="{{route('orders.select_category')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; Registrar Pedido</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('orders.index')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Pedidos</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#" class="nav-btn-submenu"><i class="fas fa-store-alt fa-fw"></i> &nbsp; Ventas <i class="fas fa-chevron-down"></i></a>
+                                <ul>
+                                    <li>
+                                        <a href="{{route('sales.create')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; Registrar Venta</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('sales.index')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Ventas</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                            @if($idrol == 1)
                             <li>
                                 <a href="#" class="nav-btn-submenu"><i class="fas fa-building fa-fw"></i> &nbsp; Sucursal <i class="fas fa-chevron-down"></i></a>
                                 <ul>
@@ -109,6 +141,7 @@
                                     </li>
                                 </ul>
                             </li>
+                            @endif
 
                             <li>
                                 <a href="#" class="nav-btn-submenu"><i class="fas  fa-calendar-check fa-fw"></i> &nbsp; Citas <i class="fas fa-chevron-down"></i></a>
@@ -122,6 +155,7 @@
                                 </ul>
                             </li>
 
+                            @if($idrol == 1)
                             <li>
                                 <a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Usuarios <i class="fas fa-chevron-down"></i></a>
                                 <ul>
@@ -133,18 +167,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li>
-                                <a href="#" class="nav-btn-submenu"><i class="fas  fa-store-alt fa-fw"></i> &nbsp; Ventas <i class="fas fa-chevron-down"></i></a>
-                                <ul>
-                                    <li>
-                                        <a href="{{route('sales.create')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; Nueva venta</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route('sales.index')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de ventas</a>
-                                    </li>
-                                </ul>
-                            </li>
-
+                            @endif
                         </ul>
                     </nav>
                 </div>
@@ -180,9 +203,6 @@
 	=            Include JavaScript files           =
 	==============================================-->
 
-	<!-- jQuery V3.4.1 -->
-
-	<script src="{{ asset('js/jquery-3.4.1.min.js') }}" ></script>
 
     <!-- popper -->
     <script src="{{ asset('js/popper.min.js') }}" ></script>

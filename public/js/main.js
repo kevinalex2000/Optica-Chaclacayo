@@ -48,6 +48,40 @@ $(document).ready(function () {
             }
         });
     });
+
+    $("#select_category_order").change(function () {
+        if ($(this).val() != "") {
+            location.href =
+                "/orders/create/" +
+                $(this).val() +
+                "/" +
+                $("option:selected", this).text();
+        }
+    });
+
+    $(".value-details").change(function () {
+        let arr = {};
+
+        let count = 0;
+        $(".value-details").each(function () {
+            debugger;
+            count++;
+
+            const name = $(this).attr("name");
+
+            let value = $("input[name='" + name + "']:checked").val();
+
+            if (value == undefined) {
+                value = $("input[name='" + name + "']").val();
+            }
+
+            arr[name] = value;
+
+            if ($(".value-details").length == count) {
+                $("#order_details").val(JSON.stringify(arr));
+            }
+        });
+    });
 });
 (function ($) {
     $(window).on("load", function () {

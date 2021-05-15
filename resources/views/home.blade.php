@@ -1,14 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
+
+@php
+$idrol = Auth::user()->role->id;
+@endphp
+
 <div class="container">
-    <div class="row mb-5">
+    <div class="row m-5">
         <div class="col-12">
             <h1 class="text-center">Bienvenido - Optica Chaclacayo</h1>
         </div>
     </div>
+    
     <div class="row mb-4">
-        <div class="col-4">
+        <div class="col-md-4 mb-3">
             <a href="{{route('clients.index')}}">
             <div class="card text-center" style="width: 18rem;">
                 <br>
@@ -19,7 +25,7 @@
               </div>
             </a>
         </div>
-        <div class="col-4">
+        <div class="col-md-4 mb-3">
             <a href="{{route('products.index')}}">
             <div class="card text-center" style="width: 18rem;">
                 <br>
@@ -30,7 +36,8 @@
               </div>
             </a>
         </div>
-        <div class="col-4">
+    @if($idrol == 1)
+        <div class="col-md-4 mb-3">
             <a href="{{route('office.index')}}">
             <div class="card text-center" style="width: 18rem;">
                 <br>
@@ -41,9 +48,8 @@
               </div>
             </a>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-4">
+    @endif
+        <div class="col-md-4 mb-3">
             <a href="{{route('appointment.index')}}">
             <div class="card text-center" style="width: 18rem;">
                 <br>
@@ -54,7 +60,8 @@
               </div>
             </a>
         </div>
-        <div class="col-4">
+    @if($idrol == 1)
+        <div class="col-md-4 mb-3">
             <a href="{{route('users.index')}}">
             <div class="card text-center" style="width: 18rem;">
                 <br>
@@ -65,7 +72,8 @@
               </div>
             </a>
         </div>
-        <div class="col-4">
+    @endif
+        <div class="col-md-4 mb-3">
             <a href="{{route('sales.index')}}">
             <div class="card text-center" style="width: 18rem;">
                 <br>

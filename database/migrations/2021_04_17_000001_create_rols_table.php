@@ -25,12 +25,12 @@ class CreateRolsTable extends Migration
         ->insert([
             [
                 "name" => "Administrador",
-                "description" => "Permisos para registrar, actualizar y eliminar",
+                "description" => "Permisos completos",
                 "leyend" => "info"
             ],
             [
                 "name" => "Asistente de ventas",
-                "description" => "Permisos para registrar y actualizar",
+                "description" => "Permisos a Clientes, productos, Pedidos, Ventas y Citas",
                 "leyend" => "success"
             ]
         ]);

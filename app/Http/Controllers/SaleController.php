@@ -7,11 +7,17 @@ use App\Models\Office;
 use App\Models\Product;
 use App\Models\Sale;
 use App\Models\User;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class SaleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -30,17 +36,29 @@ class SaleController extends Controller
      */
     public function create()
     {
+        $idOrder = null;
+
+        if(isset($_GET['pedido']))
+            $idOrder = $_GET['pedido'];
+
         $codigo = Sale::select('code')->orderBy('id', 'DESC')->take(1)->get();
+        
         if(count($codigo) == 0){
             $codigototal = 10000;
         }
         else{
             $codigototal = (float)$codigo[0]["code"] + 1;
         }
+        
         $clients = Client::all();
         $offices = Office::all();
         $products = Product::all();
-        return view('sale.create')->with('data',array("Clients" => $clients,"Offices" => $offices,"Products" => $products,"Codigo" => $codigototal));
+
+        $order = Order::find($idOrder);
+
+
+        return view('sale.create')->with('data',array("Clients" => $clients,"Offices" => $offices,"Products" => $products,"Codigo" => $codigototal))
+                ->with('Order', $order);
     }
 
     /**
@@ -75,6 +93,14 @@ class SaleController extends Controller
                 "type" => "success",
                 "message" => "<i class='fas fa-check mr-2'></i> La venta numero <b>".$request->post('codigo')."</b> ha sido registrada exitosamente"
             );
+
+        if($request->post('id_order') != null){ 
+
+            $order = Order::find($request->post('id_order'));
+            $order->is_delivered = true;
+            
+            $order->save();
+        }            
 
         return redirect("/sales/create")->with('messageResult', $messageResult);
     }
