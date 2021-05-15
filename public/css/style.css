@@ -195,9 +195,9 @@ table form {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #0575e6;
-    background: -webkit-linear-gradient(to right, #021b79, #0575e6);
-    background: linear-gradient(to right, #021b79, #0575e6);
+    background: #ffe602;
+    background: -webkit-linear-gradient(to right, #c2ae00, #ffe602);
+    background: linear-gradient(to right, #c2ae00, #ffe602);
 }
 .login-content {
     width: 95%;
