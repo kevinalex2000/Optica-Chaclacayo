@@ -5,7 +5,7 @@
 <div class="login-container">
     <div class="login-content">
         <p class="text-center">
-            <i class="fas fa-user-circle fa-5x"></i>
+            <img src="https://i.ibb.co/KmP97HN/Captura.png" alt="Captura" border="0" width="200px">
         </p>
         <p class="text-center">
             Inicia sesión con tu cuenta
