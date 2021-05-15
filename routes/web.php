@@ -42,3 +42,5 @@ Route::resource('/products', '\App\Http\Controllers\ProductController');
 Route::resource('/office', '\App\Http\Controllers\OfficeController');
 
 Route::resource('/sales', '\App\Http\Controllers\SaleController');
+
+Route::get('/pdf/{id_sale}','\App\Http\Controllers\PDFController@PDF')->name('descargarPDF');

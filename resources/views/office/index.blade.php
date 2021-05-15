@@ -6,18 +6,15 @@
     <h3 class="text-left">
         <i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE SUCURSALES
     </h3>
-    <p class="text-justify">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit nostrum rerum animi natus beatae ex. Culpa blanditiis tempore amet alias placeat, obcaecati quaerat ullam, sunt est, odio aut veniam ratione.
-    </p>
 </div>
 
 <div class="container-fluid">
     <ul class="full-box list-unstyled page-nav-tabs">
         <li>
-            <a href="{{route('office.create')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; NUEVO USUARIO</a>
+            <a href="{{route('office.create')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; NUEVA SUCURSAL</a>
         </li>
         <li>
-            <a class="active" href="{{route('office.create')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE USUARIOS</a>
+            <a class="active" href="{{route('office.create')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE SUCURSALES</a>
         </li>
     </ul>
 </div>
