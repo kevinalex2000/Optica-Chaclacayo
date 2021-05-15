@@ -16,14 +16,28 @@ class CreateSalesTable extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("id_client")->nullable();
+            $table->unsignedBigInteger("id_product");
+            $table->unsignedBigInteger("id_user")->nullable();
+            $table->unsignedBigInteger("id_office")->nullable();
             $table->string("code")->unique()->nullable();
-            $table->string("description")->nullable();
-            $table->boolean("is_delivered")->default(0);
-            $table->boolean("date_delivered")->nullable();
+            $table->float("total");
+            $table->date("date_sale");
             $table->timestamps();
+            $table->foreign('id_product')
+                    ->references('id')
+                    ->on('products')
+                    ->onDelete('cascade');
             $table->foreign('id_client')
                     ->references('id')
                     ->on('clients')
+                    ->onDelete('set null');
+            $table->foreign('id_user')
+                    ->references('id')
+                    ->on('users')
+                    ->onDelete('set null');
+            $table->foreign('id_office')
+                    ->references('id')
+                    ->on('offices')
                     ->onDelete('set null');
         });
     }

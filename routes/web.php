@@ -38,4 +38,7 @@ Route::resource('/clients', '\App\Http\Controllers\ClientController');
 Route::resource('/appointment', '\App\Http\Controllers\AppointmentController');
 
 Route::resource('/products', '\App\Http\Controllers\ProductController');
+
 Route::resource('/office', '\App\Http\Controllers\OfficeController');
+
+Route::resource('/sales', '\App\Http\Controllers\SaleController');

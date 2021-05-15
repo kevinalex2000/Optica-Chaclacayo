@@ -44,7 +44,7 @@ class UserController extends Controller
             ],
             'verify'  => false,
         ]);
-        
+
         $responseBody = json_decode($response->getBody());
 
         return $responseBody->data->display_url;
@@ -65,7 +65,7 @@ class UserController extends Controller
     public function create()
     {
         $rols = Rol::all();
-        return view('user.create')->with('rols', $rols);;
+        return view('user.create')->with('rols', $rols);
     }
 
     /**
@@ -100,7 +100,7 @@ class UserController extends Controller
         if($userExist <= 1){
             if($password != ""){
                 if($password == $password_repeat){
-                    
+
                     $user = new User();
 
                     $user->dni = $request->post('dni');

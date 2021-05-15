@@ -54,4 +54,11 @@ $(document).ready(function () {
             buscarPorFiltro($(this));
         }
     );
+
+    $('select#producto').on('change',function(){
+        var valor = $(this).val();
+        let precio =  valor.split("?");
+        $('#precio_total').focus();
+        $('#precio_total').val(precio[1]);
+    });
 });
