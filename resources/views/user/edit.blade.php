@@ -143,7 +143,7 @@
         </fieldset>
         <br><br><br>
         <fieldset>
-            <legend><i class="fas fa-image"></i> &nbsp; Foto/Imagen del Producto</legend>
+            <legend><i class="fas fa-image"></i> &nbsp; Foto/Imagen del Usuario</legend>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
