@@ -85,7 +85,7 @@
                         </form>
                     </td>
                     <td>
-                        <a href="{{route('descargarPDF',$sale->id)}}"><button type="submit" class="btn btn-primary">
+                        <a target="_blank" href="{{route('descargarPDF',$sale->id)}}"><button type="submit" class="btn btn-primary">
                                 <i class="fas fa-download"></i>
                             </button></a>
                     </td>
