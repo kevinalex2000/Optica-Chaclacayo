@@ -1,6 +1,10 @@
 <div> 
-
-    <table class="tabla-head" style="">
+    
+    <table class="tabla-head" 
+    style="
+        font-size: 14px;
+        border-collapse: collapse;
+        width:100%;">
         <tr>
             <td>
                 <img src="https://i.ibb.co/Mspq98m/optica-0.jpg" width="170px">
@@ -21,10 +25,20 @@
             <td>
             <table width="100%" >
                 <tr>
-                    <th>CONTRATO</th>
+                    <th style="
+        background-color: brown;
+        color: white;
+        border: 1px solid black;
+        padding: 4px 0px;">CONTRATO</th>
                 </tr>
                 <tr>
-                    <td  class="cell-code">N° {{$sale->code}}</td>
+                    <td style="
+                        text-align: center;
+                        border: 1px solid black;
+                        padding: 2px 0px;
+                        text-align: center;
+                        color: red;
+                        font-weight: bold;">N° {{$sale->code}}</td>
                 </tr>
             </table>
             
@@ -33,7 +47,11 @@
     </table>
 
     <br><br>
-    <table class="tabla-detalles">
+    <table class="tabla-detalles"
+    style="
+        font-size: 15px;
+        border-collapse: collapse;
+        width:100%;">
         <tbody>
         <tr>
             <td>
@@ -41,7 +59,9 @@
                     <tr>
                         <td width="15px"><b>Señor(es):</b></td>
                         <td>
-                            <p style="border-bottom: dotted;">
+                            <p style="border-bottom: dotted;
+                                margin-top:0;
+                                margin-bottom:0;">
                             {{$sale->client->name." ".$sale->client->lastname}}
                             </p>
                         </td>
@@ -89,16 +109,41 @@
 
     <br><br>
 
-    <table class="tabla-productos">
+    <table class="tabla-productos"
+    style="
+        font-size: 15px;
+        border-collapse: collapse;
+        width:100%;">
         <tr>
-            <th>CANT</th>
-            <th width="500px">DESCRIPCION</th>
-            <th>IMPORTE</th>
+            <th style="
+        background-color: brown;
+        color: white;
+        border: 1px solid black;
+        padding: 4px 0px;">CANT</th>
+            <th style="
+        background-color: brown;
+        color: white;
+        border: 1px solid black;
+        padding: 4px 0px;" width="500px">DESCRIPCION</th>
+            <th style="
+        background-color: brown;
+        color: white;
+        border: 1px solid black;
+        padding: 4px 0px;">IMPORTE</th>
         </tr>
         <tr>
-            <td><b>1</b></td>
-            <td>{{$sale->product->name." - ".$sale->product->trademark}}</td>
-            <td>{{$sale->total}}</td>
+            <td style="
+                font-size: 15px;
+                border: 1px solid black;
+                text-align: center;"><b>1</b></td>
+            <td style="
+                font-size: 15px;
+                border: 1px solid black;
+                text-align: center;">{{$sale->product->name." - ".$sale->product->trademark}}</td>
+            <td style="
+                font-size: 15px;
+                border: 1px solid black;
+                text-align: center;">{{$sale->total}}</td>
         </tr>
     </table>
 
