@@ -17,6 +17,6 @@ class PDFController extends Controller
     public function PDF($id){
         $sales = Sale::find($id);
         $pdf = \PDF::loadView('ventapdf',array("sale" =>$sales));
-        //return $pdf->stream();
+        return $pdf->stream('Venta-'.$id);
     }
 }
