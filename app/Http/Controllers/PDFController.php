@@ -17,7 +17,8 @@ class PDFController extends Controller
     public function PDF($id){
         $sales = Sale::find($id);
         $pdf = \PDF::setOptions([
-            'images' => true
+            'images' => true,
+            'isRemoteEnabled' => true
         ])->loadView('ventapdf',array("sale" =>$sales));
         return $pdf->stream('Venta-'.$id.'.pdf');
         //return view("ventapdf",array("sale" =>$sales));
