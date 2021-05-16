@@ -16,51 +16,7 @@ class PDFController extends Controller
     
     public function PDF($id){
         $sales = Sale::find($id);
-        $pdf = \PDF::loadHTML('<style>
-        .tabla-head{
-            font-size: 14px;
-            border-collapse: collapse;
-            width:100%;
-        }
-        .tabla-detalles{
-            font-size: 15px;
-            border-collapse: collapse;
-            width:100%;
-        }
-        .tabla-productos{
-            font-size: 15px;
-            border-collapse: collapse;
-            width:100%;
-        }
-        
-        .tabla-productos td{
-            font-size: 15px;
-            border: 1px solid black;
-            text-align: center;
-        }
-    
-        p{
-            margin-top:0;
-            margin-bottom:0;
-        }
-    
-        th{
-            background-color: brown;
-            color: white;
-            border: 1px solid black;
-            padding: 4px 0px;
-        }
-    
-        .cell-code{
-            text-align: center;
-            border: 1px solid black;
-            padding: 2px 0px;
-            text-align: center;
-            color: red;
-            font-weight: bold;
-        }
-    
-        </style>
+        $pdf = \PDF::loadHTML('
     
         <table class="tabla-head" style="">
             <tr>
