@@ -55,7 +55,7 @@
     <table class="tabla-head" style="">
         <tr>
             <td>
-                <img src="https://i.ibb.co/Mspq98m/optica-0.jpg" width="170px">
+                
             </td>
             <td>
                 <img src="https://i.ibb.co/KmP97HN/Captura.png" width="200px">
