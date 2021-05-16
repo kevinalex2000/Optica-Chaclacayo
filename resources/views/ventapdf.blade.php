@@ -1,5 +1,7 @@
-<div> 
-    
+<head>
+<title>Reporte - Optica Chaclacayo</title>
+</head>
+
     <table class="tabla-head" 
     style="
         font-size: 14px;
@@ -147,5 +149,3 @@
                 text-align: center;">{{$sale->total}}</td>
         </tr>
     </table>
-
-</div>   
