@@ -26,6 +26,8 @@ class PDFController extends Controller
         ]);
 
         $pdf = \PDF::setOptions([
+            'isHtml5ParserEnabled' => true, 
+            'isRemoteEnabled' => true,
             'images' => true
         ]);
         $pdf->getDomPDF()->setHttpContext($contxt);
