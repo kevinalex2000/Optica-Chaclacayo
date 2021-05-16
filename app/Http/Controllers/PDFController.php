@@ -16,7 +16,7 @@ class PDFController extends Controller
     
     public function PDF($id){
         $sales = Sale::find($id);
-        $pdf = \PDF::loadHTML('<img src="https://i.ibb.co/Mspq98m/optica-0.jpg" width="170px"><img src="https://i.ibb.co/KmP97HN/Captura.png" width="200px">');
+        $pdf = \PDF::loadHTML('<div><img src="https://i.ibb.co/Mspq98m/optica-0.jpg" width="170px"></div>');
 
         return $pdf->stream('Venta-'.$id.'.pdf');
         //return view("ventapdf",array("sale" =>$sales));
