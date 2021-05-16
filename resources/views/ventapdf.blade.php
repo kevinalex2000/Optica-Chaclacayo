@@ -1,5 +1,5 @@
 <head>
-<title>Reporte - Optica Chaclacayo</title>
+<title>Reporte N° {{$sale->code}} - Optica Chaclacayo</title>
 </head>
 
     <table class="tabla-head" 
