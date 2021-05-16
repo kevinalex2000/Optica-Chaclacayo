@@ -1,11 +1,57 @@
-<div>
+<div> 
+    
+    <style>
+    .tabla-head{
+        font-size: 14px;
+        border-collapse: collapse;
+        width:100%;
+    }
+    .tabla-detalles{
+        font-size: 15px;
+        border-collapse: collapse;
+        width:100%;
+    }
+    .tabla-productos{
+        font-size: 15px;
+        border-collapse: collapse;
+        width:100%;
+    }
+    
+    .tabla-productos td{
+        font-size: 15px;
+        border: 1px solid black;
+        text-align: center;
+    }
 
-<table class="tabla-head" style="">
+    p{
+        margin-top:0;
+        margin-bottom:0;
+    }
+
+    th{
+        background-color: brown;
+        color: white;
+        border: 1px solid black;
+        padding: 4px 0px;
+    }
+
+    .cell-code{
+        text-align: center;
+        border: 1px solid black;
+        padding: 2px 0px;
+        text-align: center;
+        color: red;
+        font-weight: bold;
+    }
+
+    </style>
+
+    <table class="tabla-head" style="">
         <tr>
             <td>
-                <img src="https://i.ibb.co/Mspq98m/optica-0.jpg" width="170px">
             </td>
             <td>
+                <img src="https://i.ibb.co/KmP97HN/Captura.png" width="200px">
             </td>
             <td class="vertical-top"  width="30%">
                 <b>VENDEDORA: </b>{{$sale->user->name}}<br>
@@ -54,6 +100,7 @@
                         <td style="width: 15px"><b>Fecha:</b></td>
                         <td>
                         <p style="border-bottom: dotted;">
+                        {{\Carbon\Carbon::parse($sale->date_sale)->format('d/m/Y')}}</p>
                         </td>                        
                     </tr>
                 </table>
@@ -86,5 +133,19 @@
         </tbody>
     </table>
 
-</div>    
-    
+    <br><br>
+
+    <table class="tabla-productos">
+        <tr>
+            <th>CANT</th>
+            <th width="500px">DESCRIPCION</th>
+            <th>IMPORTE</th>
+        </tr>
+        <tr>
+            <td><b>1</b></td>
+            <td>{{$sale->product->name." - ".$sale->product->trademark}}</td>
+            <td>{{$sale->total}}</td>
+        </tr>
+    </table>
+
+</div>   
