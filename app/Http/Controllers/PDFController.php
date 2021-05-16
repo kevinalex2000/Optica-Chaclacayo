@@ -15,9 +15,10 @@ class PDFController extends Controller
     }
     
     public function PDF($id){
-        ini_set('max_execution_time', 180);
         $sales = Sale::find($id);
-        $pdf = \PDF::loadView('ventapdf',array("sale" =>$sales));
+        $pdf = \PDF::setOptions([
+            'images' => true
+        ])->loadView('ventapdf',array("sale" =>$sales));
         return $pdf->stream('Venta-'.$id.'.pdf');
         //return view("ventapdf",array("sale" =>$sales));
     }
