@@ -26,8 +26,7 @@ class PDFController extends Controller
         ]);
 
         $pdf = \PDF::setOptions([
-            'images' => true,
-            'isRemoteEnabled' => true
+            'images' => true
         ]);
         $pdf->getDomPDF()->setHttpContext($contxt);
         $pdf = $pdf->loadView('ventapdf',array("sale" =>$sales));
