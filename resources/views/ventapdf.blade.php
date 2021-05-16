@@ -55,6 +55,7 @@
     <table class="tabla-head" style="">
         <tr>
             <td>
+                <img src="https://i.ibb.co/KmP97HN/Captura.png">
             </td>
             <td class="vertical-top"  width="30%">
                 <b>VENDEDORA: </b>{{$sale->user->name}}<br>
