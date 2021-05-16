@@ -6,125 +6,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .estilo{
-            color: white;
-            background-color: brown;
-            border: solid 1px black;padding: 2px 100px!important;
-        }
-        .estilo2{
-            color: red;
-            border: solid 1px black;padding: 5px 100px!important;
-        }
+    .tabla-head{
+        font-size: 14px;
+        border-collapse: collapse;
+        width:100%;
+    }
+    .tabla-detalles{
+        font-size: 15px;
+        border-collapse: collapse;
+        width:100%;
+    }
+    .tabla-productos{
+        font-size: 15px;
+        border-collapse: collapse;
+        width:100%;
+    }
+    
+    .tabla-productos td{
+        font-size: 15px;
+        border: 1px solid black;
+        text-align: center;
+    }
+
+    p{
+        margin-top:0;
+        margin-bottom:0;
+    }
+
+    th{
+        background-color: brown;
+        color: white;
+        border: 1px solid black;
+        padding: 4px 0px;
+    }
+
+    .cell-code{
+        text-align: center;
+        border: 1px solid black;
+        padding: 2px 0px;
+        text-align: center;
+        color: red;
+        font-weight: bold;
+    }
 
     </style>
 </head>
 <body>
-    <table  cellspacing="1" style="border-collapse: collapse" bordercolor="white" width="100%" height="100%">
+    <table class="tabla-head" style="">
+        <tr>
+            <td>
+                <img src="https://i.ibb.co/Mspq98m/optica-0.jpg" width="170px">
+            </td>
+            <td>
+                <img src="https://i.ibb.co/KmP97HN/Captura.png" width="200px">
+            </td>
+            <td class="vertical-top"  width="30%">
+                <b>VENDEDORA: </b>{{$sale->user->name}}<br>
+                <b>TIENDA: </b>{{$sale->office->name}}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="padding-top: 20px">
+                {{$sale->office->address}}
+                <br>
+                {{$sale->office->name}}
+            </td>
+            <td>
+            <table width="100%" >
+                <tr>
+                    <th>CONTRATO</th>
+                </tr>
+                <tr>
+                    <td  class="cell-code">N° {{$sale->code}}</td>
+                </tr>
+            </table>
+            
+            </td>
+        </tr>
+    </table>
+
+    <br><br>
+    <table class="tabla-detalles">
         <tbody>
         <tr>
-        <td style="text-align: center;width: 400px;">
-            <p><b>VENDEDORA: </b>{{$sale->user->name}}</p>
-            <p><b>TIENDA: </b>{{$sale->office->name}}</p>
-        </td>
+            <td>
+                <table width="100%">
+                    <tr>
+                        <td width="15px"><b>Señor(es):</b></td>
+                        <td>
+                            <p style="border-bottom: dotted;">
+                            {{$sale->client->name." ".$sale->client->lastname}}
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table width="100%">
+                    <tr>
+                        <td style="width: 15px"><b>Fecha:</b></td>
+                        <td>
+                        <p style="border-bottom: dotted;">
+                        {{\Carbon\Carbon::parse($sale->date_sale)->format('d/m/Y')}}</p>
+                        </td>                        
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table width="100%">
+                    <tr>
+                        <td width="15px"><b>Direccion:</b></td>
+                        <td>
+                            <p style="border-bottom: dotted;">
+                            {{$sale->client->address}}
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table width="100%">
+                    <tr>
+                        <td style="width: 15px"><b>Telf:</b></td>
+                        <td>
+                        <p style="border-bottom: dotted;">{{$sale->client->phone}}</p>
+                        </td>                        
+                    </tr>
+                </table>
+            </td>
         </tr>
         </tbody>
     </table>
-        <table cellspacing="1" style="border-collapse: collapse" bordercolor="white" width="100%" height="100%">
-            <tbody>
-            <tr>
-            <td>
-                <table>
-                    <tbody>
-                    <tr>
-                    <td class="estilo" style="text-align: center;">
-                        <b style="font-size: 20px;">CONTRATO</b>
-                    </td>
-                    </tr>
-                    <tr>
-                    <td class="estilo2" style="text-align: center;">
-                        <b style="font-size: 15px;">N° {{$sale->code}}</b>
-                    </td>
-                    </tr>
-                    </tbody>
-                    </table>
-            </td>
-            </tr>
-            </tbody>
-        </table>
-        <table cellspacing="1" style="border-collapse: collapse" bordercolor="white" width="100%" height="100%">
-            <tbody>
-            <tr>
-            <td style="padding: 10px;">
-                <table cellspacing="1" style="border-collapse: collapse" bordercolor="white" width="100%" height="100%">
-                    <tbody>
-                    <tr>
-                    <td style="width: 15px;font-size: 20px;"><b>Señor(es):</b></td>
-                    <td><p style="border-bottom: dotted;">{{$sale->client->name." ".$sale->client->lastname}}</p></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </td>
-            <td style="padding: 10px;">
-                <table cellspacing="1" style="border-collapse: collapse" bordercolor="white" width="100%" height="100%">
-                    <tbody>
-                    <tr>
-                    <td style="width: 15px;font-size: 20px;"><b>Fecha:</b></td>
-                    <td><p style="border-bottom: dotted;">{{$sale->date_sale}}</p></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </td>
-            </tr>
-            <tr>
-                <td style="padding: 10px;">
-                    <table cellspacing="1" style="border-collapse: collapse" bordercolor="white" width="100%" height="100%">
-                        <tbody>
-                        <tr>
-                        <td style="width: 15px;font-size: 20px;"><b>Direccion:</b></td>
-                        <td><p style="border-bottom: dotted;">{{$sale->client->address}}</p></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </td>
-                <td style="padding: 10px;">
-                    <table cellspacing="1" style="border-collapse: collapse" bordercolor="white" width="100%" height="100%">
-                        <tbody>
-                        <tr>
-                        <td style="width: 15px; font-size: 20px;"><b>Telf:</b></td>
-                        <td><p style="border-bottom: dotted;">{{$sale->client->phone}}</p></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <table  cellspacing="1" style="border-collapse: collapse" width="100%" height="100%">
-            <tbody>
-            <tr>
-            <td style="text-align: center; color: white; background-color: brown;border: solid 1px black;">
-                <b style="font-size: 20px;">CANT</b>
-            </td>
-            <td style="text-align: center; color: white; background-color: brown;border: solid 1px black;">
-                <b style="font-size: 20px;">DESCRIPCION</b>
-            </td>
-            <td style="text-align: center; color: white; background-color: brown;border: solid 1px black;">
-                <b style="font-size: 20px;">IMPORTE</b>
-            </td>
-            </tr>
-            <tr>
-            <td style="text-align: center; color:blue;border: solid 1px black;">
-                <b style="font-size: 15px;">1</b>
-            </td>
-            <td style="text-align: center; color:blue;border: solid 1px black;">
-                <b style="font-size: 15px;">{{$sale->product->name." - ".$sale->product->trademark}}</b>
-            </td>
-            <td style="text-align: center; color:blue;border: solid 1px black;">
-                <b style="font-size: 15px;">{{$sale->total}}</b>
-            </td>
-            </tr>
-            </tbody>
-            </table>
 
+    <br><br>
+
+    <table class="tabla-productos">
+        <tr>
+            <th>CANT</th>
+            <th width="500px">DESCRIPCION</th>
+            <th>IMPORTE</th>
+        </tr>
+        <tr>
+            <td><b>1</b></td>
+            <td>{{$sale->product->name." - ".$sale->product->trademark}}</td>
+            <td>{{$sale->total}}</td>
+        </tr>
+    </table>
 </body>
 </html>
