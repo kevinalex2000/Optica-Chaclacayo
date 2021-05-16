@@ -190,6 +190,7 @@ table form {
 }
 /*----------  login Styles  ----------*/
 .login-container {
+    z-index: 1000;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -199,7 +200,23 @@ table form {
     background: -webkit-linear-gradient(to right, #c2ae00, #ffe602);
     background: linear-gradient(to right, #c2ae00, #ffe602);
 }
+.avatar {
+    object-fit: cover;
+}
+
+.img-background {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    object-fit: cover;
+    opacity: 0.4;
+}
+
 .login-content {
+    z-index: 1000;
     width: 95%;
     max-width: 320px;
     height: auto;
@@ -286,7 +303,6 @@ table form {
     margin: 0 auto;
     display: block;
     border: 4px solid #fff;
-    border-radius: 100%;
 }
 .nav-lateral-avatar figcaption {
     margin-top: 20px;
