@@ -10,7 +10,7 @@
                 <img src="https://i.ibb.co/Mspq98m/optica-0.jpg" width="170px">
             </td>
             <td>
-                <img src="https://i.ibb.co/KmP97HN/Captura.png" width="200px">
+                <img src="https://i.ibb.co/VgRTXpK/Whats-App-Image-2021-05-15-at-12-12-26-AM.jpg" width="200px">
             </td>
             <td class="vertical-top"  width="30%">
                 <b>VENDEDORA: </b>{{$sale->user->name}}<br>
