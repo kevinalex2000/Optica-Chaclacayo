@@ -8,6 +8,18 @@
 		<i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE PEDIDOS
     </h3>
 </div>
+
+<div class="container-fluid">
+    <ul class="full-box list-unstyled page-nav-tabs">
+        <li>
+            <a href="{{route('orders.select_category')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; REGISTRAR PEDIDO</a>
+        </li>
+        <li>
+            <a class="active" href="{{route('orders.index')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE PEDIDOS</a>
+        </li>
+    </ul>
+</div>
+
 <div class="container-fluid">
     <div class="row group-inputs-finder" target-table-id="table-order" >
         <div class="col-md-3">

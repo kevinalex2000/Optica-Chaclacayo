@@ -9,6 +9,18 @@
     </h3>
 </div>
 
+
+<div class="container-fluid">
+    <ul class="full-box list-unstyled page-nav-tabs">
+        <li>
+            <a class="active" href="{{route('orders.select_category')}}"><i class="fas fa-plus fa-fw"></i> &nbsp; REGISTRAR PEDIDO</a>
+        </li>
+        <li>
+            <a href="{{route('orders.index')}}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE PEDIDOS</a>
+        </li>
+    </ul>
+</div>
+
 <!-- Content here-->
 <div class="container-fluid">
     <form method="post" action="{{route('clients.store')}}" class="form-neon" autocomplete="off">
