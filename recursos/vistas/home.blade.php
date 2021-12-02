@@ -1,4 +1,4 @@
-@extends('layouts.app')
+extends('layouts.app')
 
 @section('content')
 
@@ -7,12 +7,11 @@ $idrol = Auth::user()->role->id;
 @endphp
 
 <div class="container">
-    <div class="row m-5">
+    <div class="row m-2">
         <div class="col-12">
-            <h1 class="text-center">Bienvenido - Optica Chaclacayo</h1>
+            <h2 style="font-weight: bold">Gestión ventas</h2>
         </div>
     </div>
-    
     <div class="card">
         <div class="card-header">
             <div class="row mb-4" >
