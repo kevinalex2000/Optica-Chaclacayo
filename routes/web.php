@@ -60,3 +60,7 @@ Route::get('/orders/edit/{id}', [App\Http\Controllers\OrderController::class, 'e
 Route::put('/orders/{id}', [App\Http\Controllers\OrderController::class, 'update'])->name('orders.update');
 
 Route::delete('/orders/{id}', [App\Http\Controllers\OrderController::class, 'destroy'])->name('orders.destroy');
+
+Route::get('/orders/estado/{id}', [App\Http\Controllers\OrderController::class, 'estado'])->name('orders.estado');
+
+Route::put('/orders/updatestate/{id}', [App\Http\Controllers\OrderController::class, 'updatestate'])->name('orders.updatestate');
