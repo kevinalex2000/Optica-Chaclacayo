@@ -41,10 +41,11 @@
 
     <!-- General Styles -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
 	<!-- jQuery V3.4.1 -->
 
 	<script src="{{ asset('js/jquery-3.4.1.min.js') }}" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/svg-with-js.min.css" ></script>
 
 </head>
 <body>
@@ -128,7 +129,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            
+
                             @if($idrol == 1)
                             <li>
                                 <a href="#" class="nav-btn-submenu"><i class="fas fa-building fa-fw"></i> &nbsp; Sucursal <i class="fas fa-chevron-down"></i></a>
@@ -168,6 +169,13 @@
                                 </ul>
                             </li>
                             @endif
+                            
+                            <li>
+                                <a href="#" class="nav-btn-submenu"><i class="fas  fa-calendar-check fa-fw"></i> &nbsp; Reportes <i class="fas fa-chevron-down"></i></a>
+                                
+                            </li>
+        @endif
+    
                         </ul>
                     </nav>
                 </div>
