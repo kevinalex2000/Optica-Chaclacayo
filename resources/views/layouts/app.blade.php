@@ -417,7 +417,7 @@
                         },
                         title: {
                             display: true,
-                            text: 'Nivel de devoluciones (Pos test)'
+                            text: 'Nivel de entregas (Pos test)'
                         }
                     }
                 }
@@ -483,7 +483,7 @@
                         },
                         title: {
                             display: true,
-                            text: 'Nivel de devoluciones (Pos test)'
+                            text: 'Nivel de entregas (Pos test)'
                         }
                     }
                 }
@@ -549,7 +549,7 @@
                         },
                         title: {
                             display: true,
-                            text: 'Nivel de devoluciones (Pos test)'
+                            text: 'Total entregas por mes'
                         }
                     }
                 }
@@ -615,7 +615,7 @@
                         },
                         title: {
                             display: true,
-                            text: 'Nivel de devoluciones (Pos test)'
+                            text: 'Total devoluciones por mes'
                         }
                     }
                 }
