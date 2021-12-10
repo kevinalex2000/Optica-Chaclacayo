@@ -17,7 +17,7 @@ class OrderController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
         $order = Order::all();
@@ -93,7 +93,7 @@ class OrderController extends Controller
         $order = Order::find($id);
 
         $idCategory = $order->product->category->id;
-        
+
         $categories = Category::all();
         $clients = Client::all();
         $products = Product::all()->where('id_category', $idCategory);
@@ -112,7 +112,7 @@ class OrderController extends Controller
     }
 
     public function update(Request $request, $id){
-        
+
         $order = Order::find($id);
 
         $order->id_client = $request->post('client');
@@ -122,10 +122,10 @@ class OrderController extends Controller
         $order->date_delivered = $request->post('date');
 
         $order->save();
-        
+
         if($request->post('order_details') != ""){
             $orderDetails = json_decode($request->post('order_details'));
-    
+
             foreach ($orderDetails as $key => $value){
                 $orderDetail = OrderDetail::all()
                 ->where('id_form_category', $key)
@@ -153,5 +153,34 @@ class OrderController extends Controller
         );
 
         return redirect("/orders")->with('messageResult', $messageResult);
+    }
+
+    public function estado($id){
+        $order = Order::find($id);
+
+        return view('order.estado')->with('Order',$order);
+    }
+
+    public function updatestate(Request $request, $id){
+
+        $order = Order::find($id);
+
+        $order->description = $request->post('description');
+        $order->date_devolution = $request->post('date_devolution');
+        $order->is_delivered = '2';
+        $order->save();
+
+        $messageResult = array(
+            "type" => "success",
+            "message" => "<i class='fas fa-check mr-2'></i> El estado del pedido ha sido actualizado exitosamente"
+        );
+        $order = Order::all();
+        $clients = Client::all();
+        $products = Product::all();
+        $office = Office::all();
+        return view("order.index")->with('messageResult', $messageResult)->with('Orders',$order)
+            ->with('Clients',$clients)
+            ->with('Products',$products)
+            ->with('Offices',$office);
     }
 }

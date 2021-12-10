@@ -72,16 +72,17 @@
     <div class="table-responsive">
         <table class="table table-dark table-sm" id="table-order">
             <thead>
-                <tr class="text-center roboto-medium">
-                    <th>CLIENTE</th>
-                    <th>PRODUCTO</th>
-                    <th>SUCURSAL</th>
-                    <th>FECHA DE ENTREGA</th>
-                    <th>ESTADO</th>
-                    <th>ACTUALIZAR</th>
-                    <th>ELIMINAR</th>
-                    <th>VENTA</th>
-                </tr>
+            <tr class="text-center roboto-medium">
+                <th>CLIENTE</th>
+                <th>PRODUCTO</th>
+                <th>SUCURSAL</th>
+                <th>FECHA DE ENTREGA</th>
+                <th>ESTADO</th>
+                <th>ACTUALIZAR</th>
+                <th>ELIMINAR</th>
+                <th>VENTA</th>
+                <th>ACTUALIZAR ESTADO</th>
+            </tr>
             </thead>
             <tbody>
                 @foreach ($Orders as $index => $order)
@@ -91,12 +92,15 @@
                     <td column-finder-name="sucursal">{{$order->office->name}}</td>
                     <td>{{\Carbon\Carbon::parse($order->date_delivered)->format('d/m/Y')}}</td>
                     <td>
-                        @if($order->is_delivered)
-                        <span class="badge badge-success">Entregado</span>
+                        @if($order->is_delivered=='1')
+                            <span class="badge badge-success">Entregado</span>
+                        @elseif($order->is_delivered=='2')
+                            <span class="badge badge-warning">Devuelto</span>
                         @else
-                        <span class="badge badge-info">No Entregado</span>
+                            <span class="badge badge-info">No Entregado</span>
                         @endif
                     </td>
+
                     <td class="d-flex justify-content-center">
                         <a href="{{route('orders.edit', $order->id)}}" class="btn btn-success">
                               <i class="fas fa-sync-alt"></i>
@@ -112,7 +116,7 @@
                         </form>
                     </td>
                     <td>
-                    
+
                         @if($order->is_delivered)
                         Completado
                         @else
@@ -126,6 +130,11 @@
                         @endif
                     </td>
                     <td style="display: none" column-finder-name="fecha">{{$order->date_delivered}}</td>
+                    <td>
+                        <a href="{{route('orders.estado', $order->id)}}" class="btn btn-success">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $maorVentaVendedor = Order::q();
+        $ventaTotalDia=Order::r();
+        $CantidadPedidosDia=Order::p();
+        $CantidadEntregasDia=Order::x();
+        $MontoTotalVentasMes=Order::y();
+        $CantidadProductosEntregados=Order::z();
+        $CantidadProductosNoEntregados=Order::a();
+        $CantidadProductosDevueltos=Order::b();
+
+        return view('home', compact('maorVentaVendedor', 'ventaTotalDia', 'CantidadPedidosDia','CantidadEntregasDia','MontoTotalVentasMes','CantidadProductosEntregados','CantidadProductosNoEntregados','CantidadProductosDevueltos'));
     }
 }

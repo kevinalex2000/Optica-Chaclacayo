@@ -64,3 +64,14 @@ Route::delete('/orders/{id}', [App\Http\Controllers\OrderController::class, 'des
 Route::get('/orders/estado/{id}', [App\Http\Controllers\OrderController::class, 'estado'])->name('orders.estado');
 
 Route::put('/orders/updatestate/{id}', [App\Http\Controllers\OrderController::class, 'updatestate'])->name('orders.updatestate');
+
+Route::get('/reporte', [App\Http\Controllers\ReporteController::class, 'index'])->name('reporte.index');
+Route::get('/reportedevolucionespre', [App\Http\Controllers\ReporteController::class, 'reportedevolucionespre'])->name('reporte.reportedevolucionespre');
+Route::get('/reportedevolucionespos', [App\Http\Controllers\ReporteController::class, 'reportedevolucionespos'])->name('reporte.reportedevolucionespos');
+Route::get('/reporteentregaspre', [App\Http\Controllers\ReporteController::class, 'reporteentregaspre'])->name('reporte.reporteentregaspre');
+
+Route::get('/reporteentregaspos', [App\Http\Controllers\ReporteController::class, 'reporteentregaspos'])->name('reporte.reporteentregaspos');
+
+Route::get('/reporteentregastotales', [App\Http\Controllers\ReporteController::class, 'reporteentregastotales'])->name('reporte.reporteentregastotales');
+Route::get('/reportedevolucionestotales', [App\Http\Controllers\ReporteController::class, 'reportedevolucionestotales'])->name('reporte.reportedevolucionestotales');
+
