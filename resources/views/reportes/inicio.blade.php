@@ -5,12 +5,12 @@
         <div class="col-6 col-md-6 col-sm-12">
             <canvas id="reportedevolucionespre" ></canvas>
         </div>
-        <div class="col-6 col-md-6 col-sm-12">
-            <canvas id="reportedevolucionespos" ></canvas>
-        </div>
-        <div class="col-6 col-md-6 col-sm-12">
-            <canvas id="reporteentregaspre" ></canvas>
-        </div>
+{{--        <div class="col-6 col-md-6 col-sm-12">--}}
+{{--            <canvas id="reportedevolucionespos" ></canvas>--}}
+{{--        </div>--}}
+{{--        <div class="col-6 col-md-6 col-sm-12">--}}
+{{--            <canvas id="reporteentregaspre" ></canvas>--}}
+{{--        </div>--}}
         <div class="col-6 col-md-6 col-sm-12">
             <canvas id="reporteentregaspos" ></canvas>
         </div>
