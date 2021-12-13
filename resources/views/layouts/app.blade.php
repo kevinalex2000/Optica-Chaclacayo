@@ -269,7 +269,7 @@
                         data: cuenta2,
                     },
                     {
-                        label: 'PS',
+                        label: 'PD',
                         backgroundColor: 'rgb(150, 10, 132)',
                         borderColor: 'rgb(255, 3, 132)',
                         data: ND,
@@ -286,7 +286,7 @@
                         },
                         title: {
                             display: true,
-                            text: 'Nivel de devoluciones (Pre test)'
+                            text: 'Nivel de devoluciones'
                         }
                     }
                 }
@@ -299,136 +299,136 @@
             console.log('Error: ' + errorMessage);
 
         });
-        $.ajax({
-            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-            method:'get',
-            url: '{{ route('reporte.reportedevolucionespos') }}',
-            dataType: 'json'
-        }).done(function (response) {
-            var date_devolution=[];
-            var cuenta=[];
-            var date_delivered=[];
-            var cuenta2=[];
-            var ND=[];
-            for (var i in response.data) {
-                date_devolution.push(response.data[i].date_devolution);
-                cuenta.push(response.data[i].cuenta);
-                date_delivered.push(response.data[i].date_delivered);
-                cuenta2.push(response.data[i].cuenta2);
-                ND.push(response.data[i].ND);
-            }
+        {{--$.ajax({--}}
+        {{--    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },--}}
+        {{--    method:'get',--}}
+        {{--    url: '{{ route('reporte.reportedevolucionespos') }}',--}}
+        {{--    dataType: 'json'--}}
+        {{--}).done(function (response) {--}}
+        {{--    var date_devolution=[];--}}
+        {{--    var cuenta=[];--}}
+        {{--    var date_delivered=[];--}}
+        {{--    var cuenta2=[];--}}
+        {{--    var ND=[];--}}
+        {{--    for (var i in response.data) {--}}
+        {{--        date_devolution.push(response.data[i].date_devolution);--}}
+        {{--        cuenta.push(response.data[i].cuenta);--}}
+        {{--        date_delivered.push(response.data[i].date_delivered);--}}
+        {{--        cuenta2.push(response.data[i].cuenta2);--}}
+        {{--        ND.push(response.data[i].ND);--}}
+        {{--    }--}}
 
-            const data = {
-                labels: date_devolution,
-                datasets: [
-                    {
-                        label: 'PD',
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        data: cuenta,
-                    },
-                    {
-                        label: 'PS',
-                        backgroundColor: 'rgb(10, 10, 132)',
-                        borderColor: 'rgb(255, 10, 132)',
-                        data: cuenta2,
-                    },
-                    {
-                        label: 'PS',
-                        backgroundColor: 'rgb(150, 10, 132)',
-                        borderColor: 'rgb(255, 3, 132)',
-                        data: ND,
-                    }]
-            };
-            const config = {
-                type: 'bar',
-                data: data,
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                        },
-                        title: {
-                            display: true,
-                            text: 'Nivel de devoluciones (Pos test)'
-                        }
-                    }
-                }
-            };
-            const myChart = new Chart(
-                document.getElementById('reportedevolucionespos'),
-                config
-            );
-        }).fail(function (xhr, status, errorMessage) {
-            console.log('Error: ' + errorMessage);
+        {{--    const data = {--}}
+        {{--        labels: date_devolution,--}}
+        {{--        datasets: [--}}
+        {{--            {--}}
+        {{--                label: 'PD',--}}
+        {{--                backgroundColor: 'rgb(255, 99, 132)',--}}
+        {{--                borderColor: 'rgb(255, 99, 132)',--}}
+        {{--                data: cuenta,--}}
+        {{--            },--}}
+        {{--            {--}}
+        {{--                label: 'PS',--}}
+        {{--                backgroundColor: 'rgb(10, 10, 132)',--}}
+        {{--                borderColor: 'rgb(255, 10, 132)',--}}
+        {{--                data: cuenta2,--}}
+        {{--            },--}}
+        {{--            {--}}
+        {{--                label: 'PS',--}}
+        {{--                backgroundColor: 'rgb(150, 10, 132)',--}}
+        {{--                borderColor: 'rgb(255, 3, 132)',--}}
+        {{--                data: ND,--}}
+        {{--            }]--}}
+        {{--    };--}}
+        {{--    const config = {--}}
+        {{--        type: 'bar',--}}
+        {{--        data: data,--}}
+        {{--        options: {--}}
+        {{--            responsive: true,--}}
+        {{--            plugins: {--}}
+        {{--                legend: {--}}
+        {{--                    position: 'top',--}}
+        {{--                },--}}
+        {{--                title: {--}}
+        {{--                    display: true,--}}
+        {{--                    text: 'Nivel de devoluciones (Pos test)'--}}
+        {{--                }--}}
+        {{--            }--}}
+        {{--        }--}}
+        {{--    };--}}
+        {{--    const myChart = new Chart(--}}
+        {{--        document.getElementById('reportedevolucionespos'),--}}
+        {{--        config--}}
+        {{--    );--}}
+        {{--}).fail(function (xhr, status, errorMessage) {--}}
+        {{--    console.log('Error: ' + errorMessage);--}}
 
-        });
-        $.ajax({
-            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-            method:'get',
-            url: '{{ route('reporte.reporteentregaspre') }}',
-            dataType: 'json'
-        }).done(function (response) {
+        {{--});--}}
+        {{--$.ajax({--}}
+        {{--    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },--}}
+        {{--    method:'get',--}}
+        {{--    url: '{{ route('reporte.reporteentregaspre') }}',--}}
+        {{--    dataType: 'json'--}}
+        {{--}).done(function (response) {--}}
 
-            var fecha1=[];
-            var cuenta=[];
-            var fecha2=[];
-            var cuenta2=[];
-            var ND=[];
-            for (var i in response.data) {
-                fecha1.push(response.data[i].fecha1);
-                cuenta.push(response.data[i].cuenta);
-                fecha2.push(response.data[i].fecha2);
-                cuenta2.push(response.data[i].cuenta2);
-                ND.push(response.data[i].ND);
-            }
+        {{--    var fecha1=[];--}}
+        {{--    var cuenta=[];--}}
+        {{--    var fecha2=[];--}}
+        {{--    var cuenta2=[];--}}
+        {{--    var ND=[];--}}
+        {{--    for (var i in response.data) {--}}
+        {{--        fecha1.push(response.data[i].fecha1);--}}
+        {{--        cuenta.push(response.data[i].cuenta);--}}
+        {{--        fecha2.push(response.data[i].fecha2);--}}
+        {{--        cuenta2.push(response.data[i].cuenta2);--}}
+        {{--        ND.push(response.data[i].ND);--}}
+        {{--    }--}}
 
-            const data = {
-                labels: fecha1,
-                datasets: [
-                    {
-                        label: 'PD',
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        data: cuenta,
-                    },
-                    {
-                        label: 'PS',
-                        backgroundColor: 'rgb(10, 10, 132)',
-                        borderColor: 'rgb(255, 10, 132)',
-                        data: cuenta2,
-                    },
-                    {
-                        label: 'PS',
-                        backgroundColor: 'rgb(150, 10, 132)',
-                        borderColor: 'rgb(255, 3, 132)',
-                        data: ND,
-                    }]
-            };
-            const config = {
-                type: 'bar',
-                data: data,
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                        },
-                        title: {
-                            display: true,
-                            text: 'Nivel de entregas (Pos test)'
-                        }
-                    }
-                }
-            };
-            const myChart = new Chart(
-                document.getElementById('reporteentregaspre'),
-                config
-            );
-        }).fail(function (xhr, status, errorMessage) {
-            console.log('Error: ' + errorMessage);
-        });
+        {{--    const data = {--}}
+        {{--        labels: fecha1,--}}
+        {{--        datasets: [--}}
+        {{--            {--}}
+        {{--                label: 'PD',--}}
+        {{--                backgroundColor: 'rgb(255, 99, 132)',--}}
+        {{--                borderColor: 'rgb(255, 99, 132)',--}}
+        {{--                data: cuenta,--}}
+        {{--            },--}}
+        {{--            {--}}
+        {{--                label: 'PS',--}}
+        {{--                backgroundColor: 'rgb(10, 10, 132)',--}}
+        {{--                borderColor: 'rgb(255, 10, 132)',--}}
+        {{--                data: cuenta2,--}}
+        {{--            },--}}
+        {{--            {--}}
+        {{--                label: 'PD',--}}
+        {{--                backgroundColor: 'rgb(150, 10, 132)',--}}
+        {{--                borderColor: 'rgb(255, 3, 132)',--}}
+        {{--                data: ND,--}}
+        {{--            }]--}}
+        {{--    };--}}
+        {{--    const config = {--}}
+        {{--        type: 'bar',--}}
+        {{--        data: data,--}}
+        {{--        options: {--}}
+        {{--            responsive: true,--}}
+        {{--            plugins: {--}}
+        {{--                legend: {--}}
+        {{--                    position: 'top',--}}
+        {{--                },--}}
+        {{--                title: {--}}
+        {{--                    display: true,--}}
+        {{--                    text: 'Nivel de entregas (Pos test)'--}}
+        {{--                }--}}
+        {{--            }--}}
+        {{--        }--}}
+        {{--    };--}}
+        {{--    const myChart = new Chart(--}}
+        {{--        document.getElementById('reporteentregaspre'),--}}
+        {{--        config--}}
+        {{--    );--}}
+        {{--}).fail(function (xhr, status, errorMessage) {--}}
+        {{--    console.log('Error: ' + errorMessage);--}}
+        {{--});--}}
 
         $.ajax({
             headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
@@ -454,19 +454,19 @@
                 labels: fecha1,
                 datasets: [
                     {
-                        label: 'PD',
+                        label: 'PS',
                         backgroundColor: 'rgb(255, 99, 132)',
                         borderColor: 'rgb(255, 99, 132)',
                         data: cuenta,
                     },
                     {
-                        label: 'PS',
+                        label: 'PR',
                         backgroundColor: 'rgb(10, 10, 132)',
                         borderColor: 'rgb(255, 10, 132)',
                         data: cuenta2,
                     },
                     {
-                        label: 'PS',
+                        label: 'NS',
                         backgroundColor: 'rgb(150, 10, 132)',
                         borderColor: 'rgb(255, 3, 132)',
                         data: ND,
@@ -483,7 +483,7 @@
                         },
                         title: {
                             display: true,
-                            text: 'Nivel de entregas (Pos test)'
+                            text: 'Nivel de servicio'
                         }
                     }
                 }
