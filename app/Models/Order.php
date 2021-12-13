@@ -104,17 +104,17 @@ ON c.date_delivered=d.date_delivered");
     }
 
     public function scopeReporteentregastotales($query){
-        return DB::select("SELECT c.id,c.date_delivered AS fecha1,c.cuenta,d.id,d.date_delivered AS fecha2,d.cuenta2,(c.cuenta/d.cuenta2)*100 AS ND FROM
+        return DB::select("SELECT c.id,c.date_delivered AS fecha1,c.cuenta,d.id,d.date_delivered AS fecha2,d.cuenta2,(d.cuenta2/c.cuenta)*100 AS ND FROM
 (SELECT  id,date_delivered, COUNT(date_delivered) AS cuenta FROM orders WHERE is_delivered = '1' GROUP BY DATE_FORMAT(CURDATE(), '%M')) c LEFT JOIN
 (SELECT id,date_delivered, COUNT(is_delivered) AS cuenta2 FROM orders GROUP BY date_delivered) d
 ON c.date_delivered=d.date_delivered");
     }
 
     public function scopeReportedevolucionestotales($query){
-        return DB::select("SELECT c.id,c.date_devolution,c.cuenta,d.id,d.date_delivered,d.cuenta2,(c.cuenta/d.cuenta2)*100 AS ND FROM
-(SELECT  id,date_devolution,COUNT(date_devolution) AS cuenta FROM orders WHERE is_delivered = '2' GROUP BY DATE_FORMAT(CURDATE(), '%M')) c LEFT JOIN
-(SELECT id,date_delivered,COUNT(is_delivered) AS cuenta2 FROM orders GROUP BY date_delivered) d
-ON c.date_devolution=d.date_delivered");
+        return DB::select("SELECT c.id,c.date_delivered AS fecha1,c.cuenta,d.id,d.date_delivered AS fecha2,d.cuenta2,(d.cuenta2/c.cuenta)*100 AS ND FROM
+(SELECT  id,date_delivered, COUNT(date_delivered) AS cuenta FROM orders WHERE is_delivered = '1' GROUP BY DATE_FORMAT(CURDATE(), '%M')) c LEFT JOIN
+(SELECT id,date_delivered, COUNT(is_delivered) AS cuenta2 FROM orders GROUP BY date_delivered) d
+ON c.date_delivered=d.date_delivered");
     }
 
 }
