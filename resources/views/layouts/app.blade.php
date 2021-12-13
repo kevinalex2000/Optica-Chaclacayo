@@ -532,7 +532,7 @@
                         data: cuenta2,
                     },
                     {
-                        label: 'PS',
+                        label: 'NS',
                         backgroundColor: 'rgb(150, 10, 132)',
                         borderColor: 'rgb(255, 3, 132)',
                         data: ND,
@@ -598,7 +598,7 @@
                         data: cuenta2,
                     },
                     {
-                        label: 'PS',
+                        label: 'ND',
                         backgroundColor: 'rgb(150, 10, 132)',
                         borderColor: 'rgb(255, 3, 132)',
                         data: ND,
