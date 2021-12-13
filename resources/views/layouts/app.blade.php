@@ -257,19 +257,19 @@
                 labels: date_devolution,
                 datasets: [
                     {
-                    label: 'PD',
+                    label: 'PS',
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
                     data: cuenta,
                     },
                     {
-                        label: 'PS',
+                        label: 'PR',
                         backgroundColor: 'rgb(10, 10, 132)',
                         borderColor: 'rgb(255, 10, 132)',
                         data: cuenta2,
                     },
                     {
-                        label: 'ND',
+                        label: 'NS',
                         backgroundColor: 'rgb(150, 10, 132)',
                         borderColor: 'rgb(255, 3, 132)',
                         data: ND,
@@ -286,7 +286,7 @@
                         },
                         title: {
                             display: true,
-                            text: 'Nivel de devoluciones'
+                            text: 'Nivel de servicio'
                         }
                     }
                 }
@@ -454,19 +454,19 @@
                 labels: fecha1,
                 datasets: [
                     {
-                        label: 'PS',
+                        label: 'PD',
                         backgroundColor: 'rgb(255, 99, 132)',
                         borderColor: 'rgb(255, 99, 132)',
                         data: cuenta,
                     },
                     {
-                        label: 'PR',
+                        label: 'PS',
                         backgroundColor: 'rgb(10, 10, 132)',
                         borderColor: 'rgb(255, 10, 132)',
                         data: cuenta2,
                     },
                     {
-                        label: 'NS',
+                        label: 'ND',
                         backgroundColor: 'rgb(150, 10, 132)',
                         borderColor: 'rgb(255, 3, 132)',
                         data: ND,
@@ -483,7 +483,7 @@
                         },
                         title: {
                             display: true,
-                            text: 'Nivel de servicio'
+                            text: 'Nivel de devoluciones'
                         }
                     }
                 }
