@@ -269,7 +269,7 @@
                         data: cuenta2,
                     },
                     {
-                        label: 'PD',
+                        label: 'ND',
                         backgroundColor: 'rgb(150, 10, 132)',
                         borderColor: 'rgb(255, 3, 132)',
                         data: ND,
