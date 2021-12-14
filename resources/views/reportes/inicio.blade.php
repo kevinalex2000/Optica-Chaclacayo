@@ -19,11 +19,7 @@
                 <canvas id="reportedevolucionestotales" ></canvas>
 
         </div>
-        <div class="col-6 col-md-6 col-sm-12">
-
-                <canvas id="reporteentregastotales" ></canvas>
-
-        </div>
+        
     </div>
 
 @endsection
