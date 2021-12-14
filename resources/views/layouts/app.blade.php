@@ -569,15 +569,15 @@
             dataType: 'json'
         }).done(function (response) {
             console.log(response.data);
-            var fecha1=[];
+            var date_devolution=[];
             var cuenta=[];
-            var fecha2=[];
+            var date_delivered=[];
             var cuenta2=[];
             var ND=[];
             for (var i in response.data) {
-                date_devolution.push(response.data[i].fecha1);
+                date_devolution.push(response.data[i].date_devolution);
                 cuenta.push(response.data[i].cuenta);
-                date_delivered.push(response.data[i].fecha2);
+                date_delivered.push(response.data[i].date_delivered);
                 cuenta2.push(response.data[i].cuenta2);
                 ND.push(response.data[i].ND);
             }
